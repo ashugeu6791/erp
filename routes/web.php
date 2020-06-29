@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::view('/exam',"exam");
+
+Route::view('/header',"header");

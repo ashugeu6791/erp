@@ -1,0 +1,54 @@
+.height1
+{
+	font-size: 32px;
+	font-weight: 450;
+}
+a
+{
+	font-weight: 450;
+}
+.col
+{
+    color: white;
+}
+.navbar
+{
+    background-color: #253544;
+}
+a
+{
+	color: white;
+}
+
+a:hover{
+	color: rgb(252, 198, 110);
+	transition: 0.5s
+}
+a.selector
+{
+	color: rgb(30, 156, 23);
+}
+a.selector:hover
+{
+	color: rgb(3, 53, 252) ;
+	transition: 0.5s;
+}
+
+.dropdown-menu a:hover{
+	background: rgb(232, 219, 165);
+	transition: 0.5s;
+	border:1px solid red;
+}
+.dropdown-menu
+{
+	background: white;
+}
+.custom-toggler.navbar-toggler { 
+    border-color: white; 
+} 
+.custom-toggler .navbar-toggler-icon 
+{
+   background-image: url( 
+   "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
+} 
+
