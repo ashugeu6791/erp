@@ -21,7 +21,7 @@
 @extends('header')
 @section('content')
 <div style="height:auto; display:block" class="wrapper flex-column">
-    <div class="sidebar col-4">
+    <div class="sidebar col-4" style="height:85%;">
         <h4><i class="fas fa-book"></i> COURSE</h4>
         <ul>
             <li style="background: #ADD8E6"><a href="#"><b>All</b></a></li>
