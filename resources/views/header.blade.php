@@ -1,4 +1,4 @@
-  
+
 <!--
     NAME : POOJA DEORARI
     PHONE NO : 6265456600
@@ -92,7 +92,7 @@
                    <i class="fa fa-user-circle img"  style="font-size:30px" aria-hidden="true"></i>
                </a>
             </li>
-          
+
             <li class="nav-item dropdown show ">
                 <a class="nav-link dropdown-toggle mr-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -108,5 +108,6 @@
         </div>
       </div>
 </nav>
+    @yield('content')
 </body>
 </html>
