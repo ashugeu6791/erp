@@ -130,7 +130,7 @@
                 </a>
             </div>
             <div class="col-2" >
-                <a href="{{ url('/exams') }}" aria-label="Tile" style="text-decoration:none">
+                <a href="{{ url('/exam') }}" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:auto;text-align:center">
                         <i class="fas fa-file-alt pb-4" style="font-size:70px;color:orange;display:inline-block" aria-hidden="true"></i>
                         <h4 class="pb-1 text-center text-dark"><strong>Exam</strong></h4>
@@ -188,7 +188,7 @@
         </div>
     @elseif(Auth::user()->name == 'Student')
             <div class="col-2" >
-                <a href="{{ url('/exams') }}" aria-label="Tile" style="text-decoration:none">
+                <a href="{{ url('/exam') }}" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:auto;text-align:center">
                         <i class="fas fa-file-alt pb-4" style="font-size:70px;color:orange;display:inline-block" aria-hidden="true"></i>
                         <h4 class="pb-1 text-center text-dark"><strong>Exam</strong></h4>
