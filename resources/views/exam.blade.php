@@ -20,8 +20,53 @@
 <body>
 @extends('header')
 @section('content')
+<div style="height:auto; display:block" class="wrapper flex-column">
+    <div class="sidebar col-4">
+        <h4><i class="fas fa-book"></i> COURSE</h4>
+        <ul>
+            <li style="background: #ADD8E6"><a href="#"><b>All</b></a></li>
+            <li><a href="#">course 1</a></li>
+            <li><a href="#">course 2</a></li>
+            <li><a href="#">course 3</a></li>
+            <li><a href="#">course 4</a></li>
+            <li><a href="#">course 5</a></li>
+            <li><a href="#">course 6</a></li>
+            <li><a href="#">course 7</a></li>
+            <li><a href="#">course 8</a></li>
+            <li><a href="#">course 9</a></li>
+            <li><a href="#">course 10</a></li>
+            <li><a href="#">course 11</a></li>
+            <li><a href="#">course 12</a></li>
+            <li><a href="#">course 13</a></li>
+            <li><a href="#">course 14</a></li>
+            <li><a href="#">course 15</a></li>
+            <li><a href="#">course 16</a></li>
+            <li><a href="#">course 17</a></li>
+            <li><a href="#">course 18</a></li>
+            <li><a href="#">course 19</a></li>
+            <li><a href="#">course 20</a></li>
+            <li><a href="#">course 21</a></li>
+            <li><a href="#">course 22</a></li>
+            <li><a href="#">course 23</a></li>
+            <li><a href="#">course 24</a></li>
+            <li><a href="#">course 25</a></li>
+            <li><a href="#">course 26</a></li>
+            <li><a href="#">course 27</a></li>
+            <li><a href="#">course 28</a></li>
+            <li><a href="#">course 29</a></li>
+            <li><a href="#">course 30</a></li>
+            <li><a href="#">course 31</a></li>
+            <li><a href="#">course 32</a></li>
+            <li><a href="#">course 33</a></li>
+            <li><a href="#">course 34</a></li>
+            <li><a href="#">course 35</a></li>
+        </ul>
+    </div>
+</div>
+<div style="padding-left:300px; display:block" class="container ">
+    <div class="row">
     <div class="right">
-        <div class="md-form mt-0">
+        <div class="md-form mt-0" style="display:block">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
         </div>
         <nav aria-label="Page navigation example" class="navbr">
@@ -65,53 +110,8 @@
             </div>
         </div>
     </div>
-<div style="height:auto" class="wrapper flex-column">
-    <div class="sidebar">
-        <h3><i class="fas fa-book"></i> COURSE</h3>
-        <ul>
-            <li style="background: #ADD8E6"><a href="#"><b>All</b></a></li>
-            <li><a href="#">course 1</a></li>
-            <li><a href="#">course 2</a></li>
-            <li><a href="#">course 3</a></li>
-            <li><a href="#">course 4</a></li>
-            <li><a href="#">course 5</a></li>
-            <li><a href="#">course 6</a></li>
-            <li><a href="#">course 7</a></li>
-            <li><a href="#">course 8</a></li>
-            <li><a href="#">course 9</a></li>
-            <li><a href="#">course 10</a></li>
-            <li><a href="#">course 11</a></li>
-            <li><a href="#">course 12</a></li>
-            <li><a href="#">course 13</a></li>
-            <li><a href="#">course 14</a></li>
-            <li><a href="#">course 15</a></li>
-            <li><a href="#">course 16</a></li>
-            <li><a href="#">course 17</a></li>
-            <li><a href="#">course 18</a></li>
-            <li><a href="#">course 19</a></li>
-            <li><a href="#">course 20</a></li>
-            <li><a href="#">course 21</a></li>
-            <li><a href="#">course 22</a></li>
-            <li><a href="#">course 23</a></li>
-            <li><a href="#">course 24</a></li>
-            <li><a href="#">course 25</a></li>
-            <li><a href="#">course 26</a></li>
-            <li><a href="#">course 27</a></li>
-            <li><a href="#">course 28</a></li>
-            <li><a href="#">course 29</a></li>
-            <li><a href="#">course 30</a></li>
-            <li><a href="#">course 31</a></li>
-            <li><a href="#">course 32</a></li>
-            <li><a href="#">course 33</a></li>
-            <li><a href="#">course 34</a></li>
-            <li><a href="#">course 35</a></li>
-        </ul>
-    </div>
-</div>
-<div style="!important;padding-left: 200px" class="container ">
-    <div class="row">
-        <div style="height:auto" class="column" style="background-color:#FFFFFF;">
-            <h2>BOA-Exam-001</h2>
+        <div style="height:auto; width:auto" class="column" style="background-color:#FFFFFF;">
+            <h3>BOA-Exam-001</h3>
             <p>Start Date:04/01/2020<br>
                 End Date:04/04/2020</p>
             <table>
@@ -123,7 +123,7 @@
             </table>
         </div>
         <div style="height:auto;width:auto" class="column" style="background-color:#FFFFFF;">
-            <h2>LRTP-Exam-001</h2>
+            <h3>LRTP-Exam-001</h3>
             <p>Start Date:04/11/2020<br>
                 End Date:04/15/2020</p>
             <table>
@@ -134,8 +134,8 @@
                 </tbody>
             </table>
         </div>
-        <div style="height:auto" class="column" style="background-color:#FFFFFF;">
-            <h2>IELTS-Exam-001</h2>
+        <div style="height:auto; width:auto" class="column" style="background-color:#FFFFFF;">
+            <h3>IELTS-Exam-001</h3>
             <p>Start Date:04/17/2020<br>
                 End Date:04/21/2020</p>
             <table>
@@ -146,8 +146,8 @@
                 </tbody>
             </table>
         </div>
-        <div style="height:auto" class="column" style="background-color:#FFFFFF;">
-            <h2>Mid Term</h2>
+        <div style="height:auto; width:auto" class="column" style="background-color:#FFFFFF;">
+            <h3>Mid Term</h3>
             <p>Start Date:03/20/2019<br>
                 End Date:06/07/2020</p>
             <table>

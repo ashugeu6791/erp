@@ -25,7 +25,7 @@
   </head>
     <body>
 <nav class="navbar navbar-expand-lg pb-0 pt-0">
-<a class="navbar-brand " href="#" aria-label="Home">
+<a class="navbar-brand " href="{{ url('/home') }}" aria-label="Home">
           <i class="fa fa-th pt-1" style="font-size:32px" aria-hidden="true"></i>
  </a>
   <a class="navbar-brand height1 pb-2" href="#"><span>Exams</span></a>

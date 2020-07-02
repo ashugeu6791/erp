@@ -28,9 +28,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
-            <div class="container">
-                <a class="navbar-brand text-white" href="{{ url('/') }}">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm " >
+                <a class="navbar-brand text-white mr-auto"  href="{{ url('/') }}">
                 <i class="fas fa-angle-left" style="font-size:30px;color:white"></i>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -91,7 +90,6 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
         </nav>
 
         <main class="py-4">
