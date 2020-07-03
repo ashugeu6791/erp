@@ -28,6 +28,7 @@
 </head>
 <body>
     <div id="app">
+    @section('header')
         <nav class="navbar navbar-expand-md navbar-light shadow-sm " >
                 <a class="navbar-brand text-white mr-auto"  href="{{ url('/') }}">
                 <i class="fas fa-angle-left" style="font-size:30px;color:white"></i>
@@ -72,7 +73,7 @@
                                 <img width="30px" height="30px" class="rounded-circle"
                                     src="http://4.bp.blogspot.com/-zsbDeAUd8aY/US7F0ta5d9I/AAAAAAAAEKY/UL2AAhHj6J8/s1600/facebook-default-no-profile-pic.jpg"
                                     style="position:relative;top:0px">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->userid }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -91,11 +92,13 @@
                     </ul>
                 </div>
         </nav>
-
+        @show
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    @section('footer')
     <?php echo View::make('footer') ?>
+    @show
 </body>
 </html>

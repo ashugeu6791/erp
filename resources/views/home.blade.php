@@ -6,7 +6,7 @@
 @section('content')
     <div class="container">
     <div class="row pt-5">
-    @if(Auth::user()->name == 'Test User')
+    @if(strtolower(Auth::user()->UserType) == 'admin')
             <div class="col-2"  >
                 <a href="#" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:auto;text-align:center">
@@ -120,7 +120,7 @@
                 </a>
             </div>
         </div>
-    @elseif(Auth::user()->name == 'Faculty')
+    @elseif(strtolower(Auth::user()->UserType) == 'faculty')
     <div class="col-2"  >
                 <a href="#" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:auto;text-align:center">
@@ -186,7 +186,7 @@
                 </a>
             </div>
         </div>
-    @elseif(Auth::user()->name == 'Student')
+    @elseif(strtolower(Auth::user()->UserType) == 'student')
             <div class="col-2" >
                 <a href="{{ url('/exam') }}" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:auto;text-align:center">

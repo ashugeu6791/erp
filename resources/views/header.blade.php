@@ -93,17 +93,26 @@
                </a>
             </li>
 
-            <li class="nav-item dropdown show ">
-                <a class="nav-link dropdown-toggle mr-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Barack Obama
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item selector" href="#">LOGOUT</a>
-                    <a class="dropdown-item selector" href="#">GEHU</a>
-                    <a class="dropdown-item selector" href="#">GEHUB</a>
-                </div>
-          </li>
+            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <img width="30px" height="30px" class="rounded-circle"
+                                    src="http://4.bp.blogspot.com/-zsbDeAUd8aY/US7F0ta5d9I/AAAAAAAAEKY/UL2AAhHj6J8/s1600/facebook-default-no-profile-pic.jpg"
+                                    style="position:relative;top:0px">
+                                    {{ Auth::user()->userid }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                </li>
           </ul>
         </div>
       </div>
