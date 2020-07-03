@@ -29,19 +29,7 @@
 <body>
     <div id="app">
     @section('header')
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm " >
-                <a class="navbar-brand text-white mr-auto"  href="{{ url('/') }}">
-                <i class="fas fa-angle-left" style="font-size:30px;color:white"></i>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100"  >
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

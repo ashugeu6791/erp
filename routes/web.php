@@ -1,3 +1,7 @@
+<!--
+    Kunal Aaryen Sinha
+    - 8709162797
+-->
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -14,16 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth\login');
 });
 
-Route::view('/exam',"exam");
+
 
 Route::view('/header',"header");
 
 Route::view('/examtypes',"examtypes");
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/discussion', 'SelectionController@discussion')->name('discussion');
