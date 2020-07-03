@@ -25,15 +25,15 @@ class SelectionController extends Controller
 
     public function discussion()
     {
-        if(Auth::user()->name == 'Test User')
+        if(strtolower(Auth::user()->UserType) == 'admin')
         {
             return view('discussion');
         }
-        elseif(Auth::user()->name == 'Student')
+        elseif(strtolower(Auth::user()->UserType) == 'student')
         {
             return response(abort(403,'Unauthorized Access'));
         }
-        elseif(Auth::user()->name == 'Faculty')
+        elseif(strtolower(Auth::user()->UserType) == 'faculty')
         {
             return view('discussion');
         }
@@ -50,33 +50,33 @@ class SelectionController extends Controller
     }
     public function meetings()
     {
-        if(Auth::user()->name == 'Test User' || Auth::user()->name == 'Faculty')
+        if(strtolower(Auth::user()->UserType) == 'admin' || strtolower(Auth::user()->UserType) == 'faculty')
         {
             return view('meetings');
         }
-        elseif(Auth::user()->name == 'Student')
+        elseif(strtolower(Auth::user()->UserType) == 'student')
         {
             return response(abort(403,'Unauthorized Access'));
         }
     }
     public function contacts()
     {
-        if(Auth::user()->name == 'Test User' || Auth::user()->name == 'Faculty')
+        if(strtolower(Auth::user()->UserType) == 'admin' || strtolower(Auth::user()->UserType) == 'faculty')
         {
             return view('contacts');
         }
-        elseif(Auth::user()->name == 'Student')
+        elseif(strtolower(Auth::user()->UserType) == 'student')
         {
             return response(abort(403,'Unauthorized Access'));
         }
     }
     public function crm()
     {
-        if(Auth::user()->name == 'Test User' || Auth::user()->name == 'Faculty')
+        if(strtolower(Auth::user()->UserType) == 'admin' || strtolower(Auth::user()->UserType) == 'faculty')
         {
             return view('crm');
         }
-        elseif(Auth::user()->name == 'Student')
+        elseif(strtolower(Auth::user()->UserType) == 'student')
         {
             return response(abort(403,'Unauthorized Access'));
         }
@@ -87,30 +87,30 @@ class SelectionController extends Controller
     }
     public function openeducat()
     {
-        if(Auth::user()->name == 'Test User')
+        if(strtolower(Auth::user()->UserType) == 'admin')
         {
             return view('openeducat');
         }
-        elseif(Auth::user()->name == 'Student')
+        elseif(strtolower(Auth::user()->UserType) == 'student')
         {
             return response(abort('openeducat'));
         }
-        elseif(Auth::user()->name == 'Faculty')
+        elseif(strtolower(Auth::user()->UserType) == 'faculty')
         {
             return response(abort(403,'Unauthorized Access'));
         }
     }
     public function course()
     {
-        if(Auth::user()->name == 'Test User')
+        if(strtolower(Auth::user()->UserType) == 'admin')
         {
             return view('course');
         }
-        elseif(Auth::user()->name == 'Student')
+        elseif(strtolower(Auth::user()->UserType) == 'student')
         {
             return response(abort('course'));
         }
-        elseif(Auth::user()->name == 'Faculty')
+        elseif(strtolower(Auth::user()->UserType) == 'faculty')
         {
             return response(abort(403,'Unauthorized Access'));
         }
@@ -118,45 +118,45 @@ class SelectionController extends Controller
 
     public function alumni()
     {
-        if(Auth::user()->name == 'Test User')
+        if(strtolower(Auth::user()->UserType) == 'admin')
         {
             return view('alumni');
         }
-        elseif(Auth::user()->name == 'Student')
+        elseif(strtolower(Auth::user()->UserType) == 'student')
         {
             return response(abort(403,'Unauthorized Access'));
         }
-        elseif(Auth::user()->name == 'Faculty')
+        elseif(strtolower(Auth::user()->UserType) == 'faculty')
         {
             return response(abort(403,'Unauthorized Access'));
         }
     }
     public function faculties()
     {
-        if(Auth::user()->name == 'Test User')
+        if(strtolower(Auth::user()->UserType) == 'admin')
         {
             return view('faculties');
         }
-        elseif(Auth::user()->name == 'Student')
+        elseif(strtolower(Auth::user()->UserType) == 'student')
         {
             return response(abort('faculties'));
         }
-        elseif(Auth::user()->name == 'Faculty')
+        elseif(strtolower(Auth::user()->UserType) == 'faculty')
         {
             return response(abort(403,'Unauthorized Access'));
         }
     }
     public function quiz()
     {
-        if(Auth::user()->name == 'Test User')
+        if(strtolower(Auth::user()->UserType) == 'admin')
         {
             return view('quiz');
         }
-        elseif(Auth::user()->name == 'Student')
+        elseif(strtolower(Auth::user()->UserType) == 'student')
         {
             return response(abort('quiz'));
         }
-        elseif(Auth::user()->name == 'Faculty')
+        elseif(strtolower(Auth::user()->UserType) == 'faculty')
         {
             return response(abort(403,'Unauthorized Access'));
         }
