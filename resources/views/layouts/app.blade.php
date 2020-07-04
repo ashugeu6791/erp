@@ -29,7 +29,7 @@
 <body>
     <div id="app">
     @section('header')
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100"  >
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100 fixed-top"  >
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

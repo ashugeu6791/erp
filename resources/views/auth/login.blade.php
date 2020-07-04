@@ -14,9 +14,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 pt-5">
-            <div class="card pt-3"  style="border-radius:10px 10px 10px 10px; opacity:0.85; display:inline-block; margin-top:5rem;">
+            <div class="card pt-3"  style="border-radius:10px 10px 10px 10px; opacity:0.85; display:inline-block; margin-top:12%;">
                 <div class="card-body">
-                <img src="http://btechgeu.in/images/logo_graphic_era.gif" style='width:700px;height:185px;'>
+                <img src="http://btechgeu.in/images/logo_graphic_era.gif" style='width:100%;height:20%'>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
