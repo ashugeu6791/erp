@@ -1,4 +1,6 @@
 <!--
+
+	Renamed as Placements View
     TODO:Automatic fetch from database
     Author:Saksham gera
     Phone No:8218158718
