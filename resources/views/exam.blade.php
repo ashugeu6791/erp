@@ -1,7 +1,7 @@
 <!--
     TODO:Automatic fetch from database
-    Author:Aayush Vishnoi
-    Phone No:7895751720
+    Kunal Aaryen Sinha
+    - 8709162797
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,75 +14,75 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css')}}">
-    <title>Task One</title>
+    <title>Exam</title>
 </head>
 <body>
-@extends('header')
+@extends('layouts.app')
 @section('content')
-<div style="height:auto; display:block" class="wrapper flex-column">
-    <div class="sidebar col-4" style="height:85%;">
-        <h4><i class="fas fa-book"></i> COURSE</h4>
-        <ul>
-            <li style="background: #ADD8E6"><a href="#"><b>All</b></a></li>
-            <li><a href="#">course 1</a></li>
-            <li><a href="#">course 2</a></li>
-            <li><a href="#">course 3</a></li>
-            <li><a href="#">course 4</a></li>
-            <li><a href="#">course 5</a></li>
-            <li><a href="#">course 6</a></li>
-            <li><a href="#">course 7</a></li>
-            <li><a href="#">course 8</a></li>
-            <li><a href="#">course 9</a></li>
-            <li><a href="#">course 10</a></li>
-            <li><a href="#">course 11</a></li>
-            <li><a href="#">course 12</a></li>
-            <li><a href="#">course 13</a></li>
-            <li><a href="#">course 14</a></li>
-            <li><a href="#">course 15</a></li>
-            <li><a href="#">course 16</a></li>
-            <li><a href="#">course 17</a></li>
-            <li><a href="#">course 18</a></li>
-            <li><a href="#">course 19</a></li>
-            <li><a href="#">course 20</a></li>
-            <li><a href="#">course 21</a></li>
-            <li><a href="#">course 22</a></li>
-            <li><a href="#">course 23</a></li>
-            <li><a href="#">course 24</a></li>
-            <li><a href="#">course 25</a></li>
-            <li><a href="#">course 26</a></li>
-            <li><a href="#">course 27</a></li>
-            <li><a href="#">course 28</a></li>
-            <li><a href="#">course 29</a></li>
-            <li><a href="#">course 30</a></li>
-            <li><a href="#">course 31</a></li>
-            <li><a href="#">course 32</a></li>
-            <li><a href="#">course 33</a></li>
-            <li><a href="#">course 34</a></li>
-            <li><a href="#">course 35</a></li>
-        </ul>
+<link rel="stylesheet" href="{{asset('css/exam.css')}}">
+<div class="wrapper">
+    <div class="sidebar pt-4 pb-5"  style="overflow-y: scroll;width:20%;height:95%; margin-top:1%">
+        <div class="text-center sticky-top" style="margin-top:7%"><h3 class="card" style="color:black;height:10%;"><strong>COURSE</strong></h3></div>
+        <ul class="text-center">
+            <li><a href="#" style="text-decoration:none">Course 1</a></li>
+            <li><a href="#" style="text-decoration:none">Course 2</a></li>
+            <li><a href="#" style="text-decoration:none">Course 3</a></li>
+            <li><a href="#" style="text-decoration:none">Course 4</a></li>
+            <li><a href="#" style="text-decoration:none">Course 5</a></li>
+            <li><a href="#" style="text-decoration:none">Course 6</a></li>
+            <li><a href="#" style="text-decoration:none">Course 7</a></li>
+            <li><a href="#" style="text-decoration:none">Course 8</a></li>
+            <li><a href="#" style="text-decoration:none">Course 9</a></li>
+            <li><a href="#" style="text-decoration:none">Course 10</a></li>
+            <li><a href="#" style="text-decoration:none">Course 11</a></li>
+            <li><a href="#" style="text-decoration:none">Course 12</a></li>
+            <li><a href="#" style="text-decoration:none">Course 13</a></li>
+            <li><a href="#" style="text-decoration:none">Course 14</a></li>
+            <li><a href="#" style="text-decoration:none">Course 15</a></li>
+            <li><a href="#" style="text-decoration:none">Course 16</a></li>
+            <li><a href="#" style="text-decoration:none">Course 17</a></li>
+            <li><a href="#" style="text-decoration:none">Course 18</a></li>
+            <li><a href="#" style="text-decoration:none">Course 19</a></li>
+            <li><a href="#" style="text-decoration:none">Course 20</a></li>
+            <li><a href="#" style="text-decoration:none">Course 21</a></li>
+            <li><a href="#" style="text-decoration:none">Course 22</a></li>
+            <li><a href="#" style="text-decoration:none">Course 23</a></li>
+            <li><a href="#" style="text-decoration:none">Course 24</a></li>
+            <li><a href="#" style="text-decoration:none">Course 25</a></li>
+            <li><a href="#" style="text-decoration:none">Course 26</a></li>
+            <li><a href="#" style="text-decoration:none">Course 27</a></li>
+            <li><a href="#" style="text-decoration:none">Course 28</a></li>
+            <li><a href="#" style="text-decoration:none">Course 29</a></li>
+            <li><a href="#" style="text-decoration:none">Course 30</a></li>
+            <li><a href="#" style="text-decoration:none">Course 31</a></li>
+            <li><a href="#" style="text-decoration:none">Course 32</a></li>
+            <li><a href="#" style="text-decoration:none">Course 33</a></li>
+            <li><a href="#" style="text-decoration:none">Course 34</a></li>
+            <li><a href="#" style="text-decoration:none">Course 35</a></li>
+        </ul> 
     </div>
-</div>
-<div style="padding-left:300px; display:block" class="container ">
-    <div class="row">
-    <div class="right">
+</div>    
+<div class="main_content">
+        <div class="info pl-5" style="margin-left:23%;margin-right:3%;margin-top:5%">
+        <div class="pr-4 pb-3">
         <div class="md-form mt-0" style="display:block">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
         </div>
-        <nav aria-label="Page navigation example" class="navbr">
-            <ul class="pagination pg-blue">
-                <li class="page-item"><a class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-                <li class="page-item"><a class="page-link">1</a></li>
-                <li class="page-item"><a class="page-link">2</a></li>
-                <li class="page-item"><a class="page-link">3</a></li>
-                <li class="page-item"><a class="page-link">4</a></li>
-                <li class="page-item"><a class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-            </ul>
-        </nav>
         <div class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Filters </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">X</a>
+                <a class="dropdown-item" href="#">Y</a>
+                <a class="dropdown-item" href="#">Z</a>
+            </div>
+        </div> 
+
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Group By</a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" href="#">X</a>
                 <a class="dropdown-item" href="#">Y</a>
@@ -109,8 +109,19 @@
                 <a class="dropdown-item" href="#">Z</a>
             </div>
         </div>
-    </div>
-        <div style="height:auto; width:auto" class="column" style="background-color:#FFFFFF;">
+        <nav aria-label="Page navigation example" class="navbr">
+            <ul class="pagination pg-blue">
+                <li class="page-item"><a class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                <li class="page-item"><a class="page-link">1</a></li>
+                <li class="page-item"><a class="page-link">2</a></li>
+                <li class="page-item"><a class="page-link">3</a></li>
+                <li class="page-item"><a class="page-link">4</a></li>
+                <li class="page-item"><a class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+            </ul>
+        </nav>
+        </div>
+        <div class="pt-5">
+        <div style="height:auto; width:auto;" class="column" style="background-color:#FFFFFF;">
             <h3>BOA-Exam-001</h3>
             <p>Start Date:04/01/2020<br>
                 End Date:04/04/2020</p>
@@ -122,7 +133,7 @@
                 </tbody>
             </table>
         </div>
-        <div style="height:auto;width:auto" class="column" style="background-color:#FFFFFF;">
+        <div style="height:auto;width:auto;" class="column" style="background-color:#FFFFFF;">
             <h3>LRTP-Exam-001</h3>
             <p>Start Date:04/11/2020<br>
                 End Date:04/15/2020</p>
@@ -134,7 +145,7 @@
                 </tbody>
             </table>
         </div>
-        <div style="height:auto; width:auto" class="column" style="background-color:#FFFFFF;">
+        <div style="height:auto; width:auto;" class="column" style="background-color:#FFFFFF;">
             <h3>IELTS-Exam-001</h3>
             <p>Start Date:04/17/2020<br>
                 End Date:04/21/2020</p>
@@ -146,7 +157,7 @@
                 </tbody>
             </table>
         </div>
-        <div style="height:auto; width:auto" class="column" style="background-color:#FFFFFF;">
+        <div style="height:auto; width:auto;" class="column" style="background-color:#FFFFFF;">
             <h3>Mid Term</h3>
             <p>Start Date:03/20/2019<br>
                 End Date:06/07/2020</p>
@@ -158,10 +169,12 @@
                 </tbody>
             </table>
         </div>
+        </div>
+      </div>
+</div>
     </div>
     <?php echo View::make('footer') ?>
 </div>
 @stop
-
 </body>
 </html>
