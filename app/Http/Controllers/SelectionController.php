@@ -170,4 +170,16 @@ class SelectionController extends Controller
         return view('attendence');
     }
 
+
+    public function awards()
+    {
+        return view('award');
+    }
+
+    
+    public function placements()
+    {
+        return view('placements');
+    }
+
 }

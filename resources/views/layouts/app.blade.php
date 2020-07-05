@@ -46,9 +46,7 @@
                 Exams
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item selector" href="#">GEU</a>
-                <a class="dropdown-item selector" href="#">GEHU</a>
-                <a class="dropdown-item selector" href="#">GEHUB</a>
+                <a class="dropdown-item selector" href="{{ url('/awards') }}">Awards</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
