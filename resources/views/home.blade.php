@@ -99,7 +99,7 @@
                 </a>
             </div>
             <div class="col-2" >
-                <a href="#" aria-label="Tile" style="text-decoration:none">
+                <a href="{{ url('/placements') }}" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:70%;text-align:center">
                         <i class="fas fa-building pb-4" style="font-size:450%;color:red; aria-hidden="true"></i>
                         <h4 class="pb-1 text-center text-dark"><strong>Placements</strong></h4>
@@ -181,7 +181,7 @@
                 </a>
             </div>
             <div class="col-2" >
-                <a href="#" aria-label="Tile" style="text-decoration:none">
+                <a href="{{ url('/placements') }}" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:70%;text-align:center">
                         <i class="fas fa-building pb-4" style="font-size:450%;color:red; aria-hidden="true"></i>
                         <h4 class="pb-1 text-center text-dark"><strong>Placements</strong></h4>
@@ -247,7 +247,7 @@
                 </a>
             </div>
             <div class="col-2" >
-                <a href="#" aria-label="Tile" style="text-decoration:none">
+                <a href="{{ url('/placements') }}" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:70%;text-align:center">
                         <i class="fas fa-building pb-4" style="font-size:450%;color:red; aria-hidden="true"></i>
                         <h4 class="pb-1 text-center text-dark"><strong>Placements</strong></h4>

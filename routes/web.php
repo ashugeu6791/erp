@@ -43,4 +43,6 @@ Route::get('/faculties', 'SelectionController@faculties')->name('faculties');
 Route::get('/quiz', 'SelectionController@quiz')->name('quiz');
 Route::get('/lms', 'SelectionController@lms')->name('lms');
 Route::get('/attendence', 'SelectionController@attendence')->name('attendence');
+Route::get('/awards', 'SelectionController@awards')->name('awards');
+Route::get('/placements','SelectionController@placements')->name('placements');
 
