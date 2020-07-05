@@ -22,11 +22,12 @@
 <link rel="stylesheet" href="{{asset('css/exam.css')}}">
 <div class="main_content">
     <div class="info" style="margin-left:3%;margin-right:3%;margin-top:5%">
+    <h4 class="pb-3"><b>Upload Award List</b></h4>
     <form class="form-inline">  
             <div class="form-group pb-4"> 
-                <label for="university" class="col-form-label text-md-right">University</label> 
+                <label for="university" class="col-form-label text-md-right pr-3">University</label> 
                 <div class="col-md-6 pl-4">
-                            <select id="university" class=" form-control" style="width:600px" name = 'university' required autofocus>
+                            <select id="university" class=" form-control" style="width:580px;" name = 'university' required autofocus>
                             <option hidden disabled selected value></option>
                                 <option value="1">Graphic Era (Deemed to be University)</option>
                                 <option value="2">Graphic Era Hill University</option>
@@ -35,9 +36,9 @@
                 </div>
             </div>  
             <div class="form-group pb-4"> 
-                <label for="exam" class="pl-4 col-form-label text-md-right">Exam Type</label> 
-                <div class="col-md-6">
-                            <select id="exam" class=" form-control" style="width:600px" name = 'exam' required autofocus>
+                <label for="exam" class="pl-4 col-form-label text-md-right pr-4">Exam Type</label> 
+                <div class="col-md-6 pl-4">
+                            <select id="exam" class=" form-control" style="width:580px" name = 'exam' required autofocus>
                             <option hidden disabled selected value></option>
                                 <option value="1">X</option>
                                 <option value="2">Y</option>
@@ -46,9 +47,9 @@
                 </div> 
             </div>
             <div class="form-group pb-4"> 
-                <label for="program" class="col-form-label text-md-right pr-2">Program</label> 
+                <label for="program" class="col-form-label text-md-right pr-4">Program</label> 
                 <div class="col-md-6 pl-4">
-                            <select id="program" class=" form-control" style="width:600px" name = 'program' required autofocus>
+                            <select id="program" class=" form-control" style="width:580px" name = 'program' required autofocus>
                             <option hidden disabled selected value></option>
                                 <option value="1">X</option>
                                 <option value="2">Y</option>
@@ -57,9 +58,9 @@
                 </div>
             </div>  
             <div class="form-group pb-4"> 
-                <label for="branch" class="pl-4 col-form-label text-md-right pr-4">Branch</label> 
-                <div class="col-md-6 ">
-                            <select id="branch" class=" form-control" style="width:600px" name = 'branch' required autofocus>
+                <label for="branch" class="pl-4 col-form-label text-md-right pr-5">Branch</label> 
+                <div class="col-md-6 pl-4">
+                            <select id="branch" class=" form-control" style="width:580px" name = 'branch' required autofocus>
                             <option hidden disabled selected value></option>
                                 <option value="1">X</option>
                                 <option value="2">Y</option>
@@ -68,9 +69,9 @@
                 </div> 
             </div>
             <div class="form-group pb-4"> 
-                <label for="code" class="col-form-label text-md-right">Subject Code</label> 
+                <label for="code" class="col-form-label text-md-right pr-1">Subject Code</label> 
                 <div class="col-md-6 ">
-                            <select id="code" onChange="return func()" class=" form-control" style="width:585px" name = 'code' required autofocus>
+                            <select id="code" onChange="return func()" class=" form-control" style="width:580px" name = 'code' required autofocus>
                             <option hidden disabled selected value></option>
                                 <option value="1">X</option>
                                 <option value="2">Y</option>
@@ -89,9 +90,9 @@
              </script>
         
             <div class="form-group pb-4"> 
-                <label for="name" class="pl-4 col-form-label text-md-right">Subject Name</label> 
-                <div class="col-md-6 ">
-                    <input id="name" class=" form-control" style="width:584px" name = 'name' disabled required autofocus>
+                <label for="name" class="pl-4 col-form-label text-md-right pr-1">Subject Name</label> 
+                <div class="col-md-6 pl-4">
+                    <input id="name" class=" form-control" style="width:580px" name = 'name' disabled required autofocus>
                 </div> 
             </div>   
     </form>

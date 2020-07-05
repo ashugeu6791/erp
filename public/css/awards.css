@@ -13,8 +13,8 @@
   /* === Upload Box === */
   .upload {
     margin: 20px;
-    height: 350px;
-    width: 1300px;
+    height: 280px;
+    width: 97%;
     border: 8px dashed #e6f5e9;
     display: flex;
     justify-content: center;
