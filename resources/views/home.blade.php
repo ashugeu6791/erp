@@ -7,6 +7,9 @@
 @section('exam-header')
 
 @stop
+@section('placements-header')
+
+@stop
     <div class="container">
     <div class="row pt-5" style="margin-top:5%">
     @if((Auth::user()->UserType) == '1')

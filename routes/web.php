@@ -45,4 +45,5 @@ Route::get('/lms', 'SelectionController@lms')->name('lms');
 Route::get('/attendence', 'SelectionController@attendence')->name('attendence');
 Route::get('/awards', 'SelectionController@awards')->name('awards');
 Route::get('/placements','SelectionController@placements')->name('placements');
+Route::get('/add_jobs','SelectionController@add_jobs')->name('add_jobs');
 

@@ -19,6 +19,9 @@
 <body>
 @extends('layouts.app')
 @section('content')
+@section('placements-header')
+
+@stop
 <link rel="stylesheet" href="{{asset('css/exam.css')}}">
 <div class="wrapper">
     <div class="sidebar pt-4 pb-5"  style="overflow-y: scroll;width:20%;height:95%; margin-top:1%">

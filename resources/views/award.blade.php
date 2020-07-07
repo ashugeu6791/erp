@@ -19,6 +19,9 @@
 <body>
 @extends('layouts.app')
 @section('content')
+@section('placements-header')
+
+@stop
 <link rel="stylesheet" href="{{asset('css/exam.css')}}">
 <div class="main_content">
     <div class="info" style="margin-left:3%;margin-right:3%;margin-top:5%">

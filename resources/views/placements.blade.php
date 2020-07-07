@@ -36,7 +36,12 @@
 @section('content')
 @section('exam-header')
 
-@stop  
+@stop
+@if((Auth::user()->UserType) == '1' || (Auth::user()->UserType) == '3')
+@section('add_job')
+
+@stop
+@endif
 <body> 
 <link rel="stylesheet" href="{{asset('css/exam.css')}}">
 	<div class="container-fluid pt-4">

@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100 fixed-top">
         @section('exam-header')
         <!-- Left Side Of Navbar -->
-            <a class="navbar-brand " href="{{ url('/home') }}" aria-label="Home">
+        <a class="navbar-brand " href="{{ url('/home') }}" aria-label="Home">
           <i class="fa fa-th pt-1" style="font-size:32px;color:white;" aria-hidden="true"></i>
             </a>
             <a class="navbar-brand height1 pb-2 text-white" href="#"><span>Exams Dashboard</span></a>
@@ -71,6 +71,31 @@
             </li>
             </ul>
             @show
+
+            @section('placements-header')
+        <!-- Left Side Of Navbar -->
+        <a class="navbar-brand " href="{{ url('/home') }}" aria-label="Home">
+          <i class="fa fa-th pt-1" style="font-size:32px;color:white;" aria-hidden="true"></i>
+            </a>
+        <a class="navbar-brand height1 pb-2 text-white" href="#"><span>Placements</span></a>
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ">
+            @section('add_job')
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle col text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jobs
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item selector" href="{{ url('/add_jobs') }}"><i class="fas fa-plus"></i>&nbsp; Add Job</a>
+                </div>
+            </li>
+            @show
+             </ul>
+            @show
+
 
 
                     <!-- Right Side Of Navbar -->

@@ -182,4 +182,16 @@ class SelectionController extends Controller
         return view('placements');
     }
 
+    public function add_jobs()
+    {
+        if((Auth::user()->UserType) == '1' || (Auth::user()->UserType) == '3')
+        {
+            return response(abort(403,'Unauthorized Access'));
+        }
+        elseif((Auth::user()->UserType) == '2')
+        {
+            return view('add_jobs'); 
+        }
+    }
+
 }
