@@ -28,9 +28,10 @@
 @stop
 @endif
 <link rel="stylesheet" href="{{asset('css/exam.css')}}">
+<h4 style="margin-top:5%;padding-left:2%"><b>Add Job Openings</b></h4>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8" style="padding-top:10%">
+        <div class="col-md-8" style="padding-top:4%">
             <div class="card shadow p-3 mb-5 bg-white rounde">
                 <div class="card-body">
                     <form method="POST" action=" ">
