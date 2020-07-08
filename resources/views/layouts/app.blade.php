@@ -83,6 +83,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto ">
+            @section('edit')
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle col text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profile
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item selector" href="{{ url('/edit_profile') }}">Edit Profile</a>
+                </div>
+            </li>
+            @show
             @section('add_job')
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle col text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

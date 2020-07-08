@@ -194,4 +194,18 @@ class SelectionController extends Controller
         }
     }
 
+    public function edit()
+    {
+        if((Auth::user()->UserType) == '1' || (Auth::user()->UserType) == '2')
+        {
+            return response(abort(403,'Unauthorized Access'));
+        }
+        elseif((Auth::user()->UserType) == '3')
+        {
+            return view('edit_profile');
+        }
+    }
+
+    
+
 }
