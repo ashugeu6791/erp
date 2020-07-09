@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+@section('header')
+
+@stop
+<link href="{{ asset('css/login.css') }}" rel="stylesheet">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+            <div class="card pt-3"  style="border-radius:10px 10px 10px 10px; opacity:0.85; display:inline-block; margin-top:11%;">
+            <div class="card-body">
+                <img src="http://btechgeu.in/images/logo_graphic_era.gif" style='width:100%;height:20%'>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -43,5 +49,8 @@
             </div>
         </div>
     </div>
+    @section('footer')
+
+@stop
 </div>
 @endsection
