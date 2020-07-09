@@ -33,7 +33,7 @@
                         @csrf
 
                         <div class="form-group row" style="padding-top:5%">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('University') }}</label>
+                            <label for="university" class="col-md-4 col-form-label text-md-right">{{ __('University') }}</label>
 
                             <div class="col-md-6">
                             <select id="university" class=" form-control" name = 'university' required autofocus>
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="designation" class="col-md-4 col-form-label text-md-right">{{ __('Exam Type') }}</label>
+                            <label for="exam" class="col-md-4 col-form-label text-md-right">{{ __('Exam Type') }}</label>
 
                             <div class="col-md-6">
                             <select id="exam" class=" form-control" name = 'exam' required autofocus>
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Program') }}</label>
+                            <label for="program" class="col-md-4 col-form-label text-md-right">{{ __('Program') }}</label>
 
                             <div class="col-md-6">
                             <select id="program" class=" form-control" name = 'program' required autofocus>
@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="eligibility" class="col-md-4 col-form-label text-md-right">{{ __('Subject Code') }}</label>
+                            <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Subject Code') }}</label>
 
                             <div class="col-md-6 ">
                             <select id="code" onChange="return func()" class=" form-control" name = 'code' required autofocus>
@@ -95,7 +95,7 @@
                         </script>
 
                         <div class="form-group row">
-                            <label for="package" class="col-md-4 col-form-label text-md-right">{{ __('Package') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Subject Name') }}</label>
 
                             <div class="col-md-6">
                             <input id="name" class=" form-control" name = 'name' disabled required autofocus>
