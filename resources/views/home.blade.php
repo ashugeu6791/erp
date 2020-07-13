@@ -134,7 +134,7 @@
                 </a>
             </div>
         </div>
-    @elseif((Auth::user()->UserType) == '3')
+    @elseif((Auth::user()->UserType) == '2')
     <div class="col-2"  >
                 <a href="#" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:70%;text-align:center">
@@ -208,7 +208,7 @@
                 </a>
             </div>
         </div>
-    @elseif((Auth::user()->UserType) == '2')
+    @elseif((Auth::user()->UserType) == '3')
             <div class="col-2" >
                 <a href="{{ url('/exam') }}" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:70%;text-align:center">
