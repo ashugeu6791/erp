@@ -22,7 +22,11 @@
 @section('exam-header')
 
 @stop
-@if((Auth::user()->UserType) == '1' || (Auth::user()->UserType) == '3')
+@if((Auth::user()->UserType) == '1' || (Auth::user()->UserType) == '2')
+@section('edit')
+
+@stop
+@elseif((Auth::user()->UserType) == '1' || (Auth::user()->UserType) == '3')
 @section('add_job')
 
 @stop
