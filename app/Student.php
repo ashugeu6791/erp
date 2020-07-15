@@ -14,7 +14,8 @@ class Student extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
+
+    /*protected $fillable = [
         'userid','name','fname','mname','tenthBoard','tenthPercentage'
         ,'twelfthBoard'
         ,'twelfthPercentage'
@@ -44,4 +45,5 @@ class Student extends Authenticatable
         'tenthSemPercentage',
         'degreeAwarded',
     ];
+    */
 }
