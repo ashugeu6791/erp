@@ -116,7 +116,7 @@ class StudInsertController extends Controller {
                 "userid"=>$userid,
                 "name"=>$name,
                 "fname"=>$fname,
-                "mname"=>$fname,
+                "mname"=>$mname,
                 "email"=>$email,
                 "phone"=>$phone,
                 "dob"=>$dob,
