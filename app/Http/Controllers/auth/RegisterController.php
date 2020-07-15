@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
@@ -47,8 +48,9 @@ class RegisterController extends Controller
      *
      * @var string
      */
-
     protected $redirectTo = ('/');
+
+
 
 
     /**
@@ -71,7 +73,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'userid' => ['required', 'string', 'max:255','unique:users'],
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'username' => ['required', 'string', 'max:255'],
             'UserType' => ['required', 'string', 'max:20'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);

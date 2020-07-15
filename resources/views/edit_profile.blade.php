@@ -3,6 +3,7 @@
     Kunal Aaryen Sinha
     - 8709162797
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,14 +35,13 @@
         <div class="col-md-8" style="padding-top:2%">
             <div class="card shadow p-3 mb-5 bg-white rounde">
                 <div class="card-body">
-                    <form method="POST" action=" ">
+                    <form method="post" action="/update">
                         @csrf
-
                         <div class="form-group row" style="padding-top:5%">
                             <label for="userid" class="col-md-4 col-form-label text-md-right">{{ __('User ID') }}</label>
 
                             <div class="col-md-6">
-                                <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid')??Auth::user()->userid }}" required autocomplete="userid" autofocus>
+                                <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid')??$students[0]->userid }}" required readonly autocomplete="userid" autofocus>
 
                             </div>
                         </div>
@@ -50,31 +50,52 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name')??Auth::user()->username }}" required autocomplete="name">
+                                <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name')??$students[0]->name }}" required readonly autocomplete="name">
 
                             </div>
+                            
                         </div>
                         <div class="form-group row">
-                            <label for="10Per" class="col-md-4 col-form-label text-md-right">{{ __('Class 10th Percentage') }}</label>
+                            <label for="fname" class="col-md-4 col-form-label text-md-right">{{ __('Father Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="10Per" type="10Per" class="form-control @error('10Per') is-invalid @enderror" name="10Per" required autocomplete="new-10Per">
+                                <input id="fname" type="fname" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') ??$students[0]->fname}}" readonly autocomplete="fname">
+
                             </div>
+                            
                         </div>
-
                         <div class="form-group row">
-                            <label for="12Per" class="col-md-4 col-form-label text-md-right">{{ __('Class 12th Percentage') }}</label>
+                            <label for="mname" class="col-md-4 col-form-label text-md-right">{{ __('Mother Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="12Per" type="12Per" class="form-control @error('12Per') is-invalid @enderror" name="12Per" required autocomplete="new-12Per">
+                                <input id="mname" type="mname" class="form-control @error('mname') is-invalid @enderror" name="mname" value="{{ old('mname')??$students[0]->mname }}"  readonly autocomplete="mname">
+
                             </div>
+                            
                         </div>
-
                         <div class="form-group row">
-                            <label for="university" class="col-md-4 col-form-label text-md-right">{{ __('University') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email-id') }}</label>
 
                             <div class="col-md-6">
-                                <input id="university" type="university" class="form-control @error('university') is-invalid @enderror" name="university" required autocomplete="new-university">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email')??$students[0]->email  }}" readonly autocomplete="email">
+
+                            </div>
+                            
+                        </div>
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone')??$students[0]->phone }}" readonly autocomplete="phone">
+
+                            </div>
+                            
+                        </div>
+                        <div class="form-group row">
+                            <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Date Of Birth') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="<?php echo date('Y-m-d',strtotime($students[0]->dob)); ?>" readonly autocomplete="dob">
                             </div>
                         </div>
 
@@ -82,7 +103,7 @@
                             <label for="course" class="col-md-4 col-form-label text-md-right">{{ __('Course') }}</label>
 
                             <div class="col-md-6">
-                                <input id="course" type="course" class="form-control @error('course') is-invalid @enderror" name="course" required autocomplete="new-course">
+                                <input id="course" type="course" class="form-control @error('course') is-invalid @enderror" name="course" value="{{ old('phone')??$students[0]->course }}" readonly autocomplete="new-course">
                             </div>
                         </div>
 
@@ -90,15 +111,15 @@
                             <label for="branch" class="col-md-4 col-form-label text-md-right">{{ __('Branch') }}</label>
 
                             <div class="col-md-6">
-                                <input id="branch" type="branch" class="form-control @error('branch') is-invalid @enderror" name="branch" required autocomplete="new-branch">
+                                <input id="branch" type="branch" class="form-control @error('branch') is-invalid @enderror" name="branch" value="{{ old('phone')??$students[0]->branch }}" readonly autocomplete="new-branch">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="sgpa/cgpa" class="col-md-4 col-form-label text-md-right">{{ __('Overall SGPA/CGPA') }}</label>
+                            <label for="sgpa" class="col-md-4 col-form-label text-md-right">{{ __('Overall SGPA/CGPA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="sgpa/cgpa" type="sgpa/cgpa" class="form-control @error('sgpa/cgpa') is-invalid @enderror" name="sgpa/cgpa" required autocomplete="new-sgpa/cgpa">
+                                <input id="sgpa" type="sgpa" class="form-control @error('sgpa') is-invalid @enderror" name="sgpa" value="{{ old('phone')??$students[0]->sgpa }}" autocomplete="new-sgpa">
                             </div>
                         </div>
 

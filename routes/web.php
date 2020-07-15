@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::view('/header',"header");
 
 Route::view('/examtypes',"examtypes");
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -47,4 +48,9 @@ Route::get('/awards', 'SelectionController@awards')->name('awards');
 Route::get('/placements','SelectionController@placements')->name('placements');
 Route::get('/add_jobs','SelectionController@add_jobs')->name('add_jobs');
 Route::get('/edit_profile','SelectionController@edit')->name('addedit_profile');
+Route::get('insert','StudInsertController@insertform');
+Route::post('create','StudInsertController@insert');
+Route::post('update','StudInsertController@update');
+Route::get('upload','StudInsertController@upload');
+Route::post('upload','StudInsertController@uploadtodb');
 

@@ -14,10 +14,18 @@
     <div class="row pt-5" style="margin-top:5%">
     @if((Auth::user()->UserType) == '1')
             <div class="col-2"  >
-                <a href="#" aria-label="Tile" style="text-decoration:none">
+                <a href="{{ url('/insert') }}" aria-label="Tile" style="text-decoration:none">
+                    <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:70%;width:170%;text-align:center;">
+                        <i class="fas fa-user pb-4" style="font-size:450%;color:red;" aria-hidden="true"></i>
+                        <h4 class=" pb-1 text-center text-dark"><strong>Add Student</strong></h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-2"  >
+                <a href="{{ url('/upload') }}" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:70%;width:170%;text-align:center;">
                         <i class="fas fa-users pb-4" style="font-size:450%;color:red;" aria-hidden="true"></i>
-                        <h4 class=" pb-1 text-center text-dark"><strong>Discussion</strong></h4>
+                        <h4 class=" pb-1 text-center text-dark"><strong>Add Multiple Students</strong></h4>
                     </div>
                 </a>
             </div>

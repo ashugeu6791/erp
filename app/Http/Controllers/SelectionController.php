@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class SelectionController extends Controller
 {
@@ -201,8 +202,11 @@ class SelectionController extends Controller
             return response(abort(403,'Unauthorized Access'));
         }
         elseif((Auth::user()->UserType) == '3')
-        {
-            return view('edit_profile');
+        {   
+            $userid = Auth::user()->userid;
+            $students = DB::select( DB::raw("SELECT * FROM students WHERE userid = '$userid'") );
+            
+            return view('edit_profile')->with('students',$students);
         }
     }
 
