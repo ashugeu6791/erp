@@ -48,6 +48,7 @@ class StudInsertController extends Controller {
       $userdata = array('userid'=>$userid,"username"=>$name,"UserType"=>'3',"password"=>$userid,"created_at"=>'2020-07-15 04:59:04',"updated_at"=>'2020-07-15 04:59:04');
       DB::table('students')->insert($data);
       DB::table('users')->insert(['userid'=>$userid,'username'=>$name, 'UserType' =>'3','password'=>Hash::make($phone)]);
+      return redirect("home");
     }
     catch(\Exception $e){
         return view("error");
