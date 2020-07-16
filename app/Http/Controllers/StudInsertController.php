@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Hash;
+use App\Student;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -33,32 +35,40 @@ class StudInsertController extends Controller {
    }
 	
    public function insert(Request $request) {
-    try{
-      $userid = $request->input('userid');
-      $name = $request->input('username');
-      $FName = $request->input('fname');
-      $MName = $request->input('mname');
-      $email = $request->input('email');
-      $phone = $request->input('phone');
-      $dob = $request->input('dob');
-      $course = $request->input('course');
-      $branch = $request->input('branch');
-      $data=array('userid'=>$userid,"name"=>$name,"fname"=>$FName,"mname"=>$MName,"email"=>$email,"phone"=>$phone,"dob"=>$dob,"course"=>$course,
-      "branch"=>$branch);
-      $userdata = array('userid'=>$userid,"username"=>$name,"UserType"=>'3',"password"=>$userid,"created_at"=>'2020-07-15 04:59:04',"updated_at"=>'2020-07-15 04:59:04');
-      DB::table('students')->insert($data);
-      DB::table('users')->insert(['userid'=>$userid,'username'=>$name, 'UserType' =>'3','password'=>Hash::make($phone)]);
-      return redirect("home");
-    }
-    catch(\Exception $e){
-        return view("error");
-    } 
+       $request->validate([
+           'userid'=>'required',
+           'phone'=>'required'
+       ]);
+
+       $studentdata = new Student([
+        'userid' => $request->get('userid'),
+        'name' => $request->get('username'),
+        'fname' => $request->get('fname'),
+        'mname' => $request->get('mname'),
+        'email' => $request->get('email'),
+        'phone' => $request->get('phone'),
+        'dob' => $request->get('dob'),
+        'course' => $request->get('course'),
+        'branch' => $request->get('branch')
+    ]);
+
+    $userdata = new User([
+        'userid' => $request->get('userid'),
+        'username' => $request->get('username'),
+        'UserType' => '3',
+        'password' => Hash::make($request->get('phone'))
+    ]);
+
+    $studentdata->save();
+    $userdata->save();
+    return redirect('home');
    }
 
    public function update(Request $request) 
    {
             $sgpa = $request->input('sgpa');
-            $data=array("sgpa"=>$sgpa);
+            $updated= date('Y-m-d H:i:s');
+            $data=array("sgpa"=>$sgpa,"updated_at"=>$updated);
             $id = Auth::user()->userid;
             DB::table('students')->where("userid",$id)->update($data);
             return redirect('edit_profile');

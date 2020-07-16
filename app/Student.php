@@ -2,21 +2,15 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class Student extends Authenticatable
+class Student extends Model
 {
-    use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-
-    /*protected $fillable = [
-        'userid','name','fname','mname','tenthBoard','tenthPercentage'
+        protected $fillable = [
+        'userid','name','fname','mname','email','phone','dob','course','branch','sgpa' 
+        
+        
+        /*'tenthBoard','tenthPercentage'
         ,'twelfthBoard'
         ,'twelfthPercentage'
         ,'UG'
@@ -44,6 +38,6 @@ class Student extends Authenticatable
         'tenthSemResult',
         'tenthSemPercentage',
         'degreeAwarded',
+        */
     ];
-    */
 }
