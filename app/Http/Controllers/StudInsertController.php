@@ -123,22 +123,25 @@ class StudInsertController extends Controller {
            $course = $data['course'];
            $branch =$data['branch'];
            $sgpa = $data['sgpa'];
-           $userdata = array(
-                "userid"=>$userid,
-                "name"=>$name,
-                "fname"=>$fname,
-                "mname"=>$mname,
-                "email"=>$email,
-                "phone"=>$phone,
-                "dob"=>$dob,
-                "course"=>$course,
-                "branch"=>$branch,
-                "sgpa"=>$sgpa,
-                "created_at"=> date('Y-m-d H:i:s'),
-                "updated_at"=> date('Y-m-d H:i:s'));
-           DB::table('students')->insertOrIgnore($userdata);
-           DB::table('users')->insertOrIgnore(['userid'=>$userid,'username'=>$name, 'UserType' =>'3','password'=>Hash::make($phone), 'created_at'=> date('Y-m-d H:i:s'),'updated_at'=> date('Y-m-d H:i:s')]);
-       
+                $studentdata= Student::firstOrNew(['userid'=>$userid]);
+                $studentdata->userid=$userid;
+                $studentdata->name=$name;
+                $studentdata->fname=$fname;
+                $studentdata->mname=$mname;
+                $studentdata->email=$email;
+                $studentdata->phone=$phone;
+                $studentdata->dob=$dob;
+                $studentdata->course=$course;
+                $studentdata->branch=$branch;
+                $studentdata->sgpa=$sgpa;
+                $studentdata->save();
+
+                $userdata= User::firstOrNew(['userid'=>$userid]);
+                $userdata->userid=$userid;
+                $userdata->username=$name;
+                $userdata->UserType='3';
+                $userdata->password= Hash::make($phone);
+                $userdata->save();
         }
         return redirect("home");
     }
