@@ -133,9 +133,11 @@ class StudInsertController extends Controller {
                 "dob"=>$dob,
                 "course"=>$course,
                 "branch"=>$branch,
-                "sgpa"=>$sgpa);
+                "sgpa"=>$sgpa,
+                "created_at"=> date('Y-m-d H:i:s'),
+                "updated_at"=> date('Y-m-d H:i:s'));
            DB::table('students')->insertOrIgnore($userdata);
-           DB::table('users')->insertOrIgnore(['userid'=>$userid,'username'=>$name, 'UserType' =>'3','password'=>Hash::make($phone)]);
+           DB::table('users')->insertOrIgnore(['userid'=>$userid,'username'=>$name, 'UserType' =>'3','password'=>Hash::make($phone), 'created_at'=> date('Y-m-d H:i:s'),'updated_at'=> date('Y-m-d H:i:s')]);
        
         }
         return redirect("home");
