@@ -29,7 +29,6 @@ class CardController extends Controller
             if($students[0]->admitcard == 'yes')
                 return view('admit_cards-students');
             else
-                echo '<script> alert("Your Admit is Not Available Yet") </script>';
                 return response(abort(404,''));
         }
     }
