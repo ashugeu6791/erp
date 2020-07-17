@@ -1,7 +1,4 @@
-<!--
-    Kunal Aaryen Sinha
-    - 8709162797
--->
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -53,4 +50,9 @@ Route::post('create','StudInsertController@insert');
 Route::post('update','StudInsertController@update');
 Route::get('upload','StudInsertController@upload');
 Route::post('upload','StudInsertController@uploadtodb');
+Route::get('change','StudInsertController@change');
+Route::get('admit-card','CardController@cards');
+Route::post ( '/search','CardController@search');
+Route::post ( 'generate','CardController@generate');
+Route::get('download', 'CardController@downloadPDF');
 

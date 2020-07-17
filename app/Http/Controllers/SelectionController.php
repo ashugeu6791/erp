@@ -205,7 +205,6 @@ class SelectionController extends Controller
         {   
             $userid = Auth::user()->userid;
             $students = DB::select( DB::raw("SELECT * FROM students WHERE userid = '$userid'") );
-            
             return view('edit_profile')->with('students',$students);
         }
     }

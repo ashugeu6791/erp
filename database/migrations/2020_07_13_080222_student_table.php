@@ -25,6 +25,7 @@ class StudentTable extends Migration
             $table->string('course')->nullable();
             $table->string('branch')->nullable();
             $table->string('sgpa')->nullable();
+            $table->string('admitcard')->default('no');
             $table->timestamps();
 
 

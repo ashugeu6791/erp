@@ -33,6 +33,17 @@ class StudInsertController extends Controller {
             return response(abort(403,'Unauthorized Access'));
         }
    }
+
+   public function change() {
+    if((Auth::user()->UserType) == '1')
+    {
+        return view('update'); 
+    }
+    else
+    {
+        return response(abort(403,'Unauthorized Access'));
+    }
+}
 	
    public function insert(Request $request) {
        $request->validate([

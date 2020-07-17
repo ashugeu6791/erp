@@ -47,6 +47,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item selector" href="{{ url('/awards') }}">Awards</a>
+                <a class="dropdown-item selector" href="{{ url('/admit-card') }}">Admit Card</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
