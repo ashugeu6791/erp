@@ -29,6 +29,14 @@
                     </div>
                 </a>
             </div>
+            <div class="col-2"  >
+                <a href="{{ url('/edit') }}" aria-label="Tile" style="text-decoration:none">
+                    <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:70%;width:170%;text-align:center;">
+                        <i class="fas fa-user-edit pb-4" style="font-size:450%;color:red;" aria-hidden="true"></i>
+                        <h4 class=" pb-1 text-center text-dark"><strong>Update Student</strong></h4>
+                    </div>
+                </a>
+            </div>
             <div class="col-2" >
                 <a href="{{ url('/exam') }}" aria-label="Tile" style="text-decoration:none">
                     <div class="card-body bg-white w-100 rounded shadow-lg p-3 mb-5 bg-white rounded" style="height:70%;text-align:center">

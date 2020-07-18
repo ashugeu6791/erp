@@ -96,6 +96,49 @@ class StudInsertController extends Controller {
             return response(abort(403,'Unauthorized Access'));
         }
      }
+
+     public function edit()
+     {
+         if((Auth::user()->UserType) == '1' )
+         {
+            return view('admin_edit_student'); 
+           
+         }
+         else
+         {   
+            return response(abort(403,'Unauthorized Access'));
+         }
+     }
+
+     public function search(Request $request) {
+        $q = $request->input('q');
+        $students = DB::select( DB::raw("SELECT * FROM students WHERE userid = '$q'") );
+            return view ('admin_edit_student')->with('students',$students);
+    }
+
+    public function admin_update_details(Request $request) {
+
+        $id = $request->input('userid');
+        $studentdata = [
+         'name' => $request->input('name'),
+         'fname' => $request->input('fname'),
+         'mname' => $request->input('mname'),
+         'email' => $request->input('email'),
+         'phone' => $request->input('phone'),
+         'dob' => $request->input('dob'),
+         'course' => $request->input('course'),
+         'branch' => $request->input('branch'),
+         'updated_at' => date('Y-m-d H:i:s')
+     ];
+
+     $userdata = [
+        'username' => $request->input('name'),
+        'updated_at' => date('Y-m-d H:i:s')
+     ];
+     DB::table('students')->where("userid",$id)->update($studentdata);
+     DB::table('users')->where("userid",$id)->update($userdata);
+     return view('admin_edit_student');
+    }
     
      public function uploadtodb(Request $request)
      {

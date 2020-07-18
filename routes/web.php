@@ -55,4 +55,6 @@ Route::get('admit-card','CardController@cards');
 Route::post ( '/search','CardController@search');
 Route::post ( 'generate','CardController@generate');
 Route::get('download', 'CardController@downloadPDF');
-
+Route::get('/edit','StudInsertController@edit');
+Route::post ( '/search','StudInsertController@search');
+Route::post ( '/change_via_admin','StudInsertController@admin_update_details');
