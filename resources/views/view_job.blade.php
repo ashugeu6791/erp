@@ -51,9 +51,13 @@
                          </a>
 
                          @elseif(Auth::user()->UserType == '3')
-                         <a href="apply/{{($jobs[0]->verification_token)}}">
-                            <button class="btn btn-danger float-right" type="button">Apply</button>
-                         </a>
+                            @if($data == 0)
+                                <button class="btn btn-danger float-right" disabled type="button">Not Eligible</button>
+                            @elseif($data == 1)
+                                <a href="apply/{{($jobs[0]->verification_token)}}">
+                                <button class="btn btn-danger float-right" type="button">Apply</button>
+                                 </a>
+                            @endif
                          @endif
                          </p>
                          <br>
