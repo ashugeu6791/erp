@@ -180,7 +180,8 @@ class SelectionController extends Controller
     
     public function placements()
     {
-        return view('placements');
+            $jobs = DB::table('jobs')->orderby('updated_at','DESC')->simplepaginate(7);
+            return view('jobs')->with('jobs',$jobs);   
     }
 
     public function add_jobs()

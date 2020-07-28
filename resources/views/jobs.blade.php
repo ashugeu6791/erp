@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <title>Exam</title>
+    <title>Placements</title>
 </head>
 <body>
 @extends('layouts.app')
@@ -40,18 +40,17 @@
                  <div class="card">
                  	<div class="card-body">
                  		<div class="row px-0 no-gutters">
-                 			<div class="col-2">
-                 				
+                 			<div class="col-2 pl-5">
+                             <i class="fas fa-award pl-2" style="font-size:650%;color:grey"></i>
                  			</div>
                  			<div class="col-6">
-                 				<h6 class="card-title">{{$job->role}}</h6>
+                 				<h6 class="card-title"></h6>
+                                 <div><b>{{$job->designation}}</b></div><br>
                  	             <div>{{$job->company}}</div><br>
-                 	             <p>Event At:Delhi</p>
                  			</div class="col-4">
                  			<div>
-                 				<p>Annual pay:<b> {{$job->package}}</b></p>
-                 				<p>Profile: It Services </p>
-								 <p>Eligible Courses:<b> {{implode(', ',(json_decode($job->eligibility)))}}</b>
+                 				<p>Annual pay:<b> </b><b>{{$job->package}}</b></p>
+								 <p>Eligible Courses:<b> {{implode(', ',(json_decode($job->courses)))}}</b>
                  				<p>Last Date:<b> {{$job->apply_by}}</b>
                  			</div>
                  			
@@ -59,12 +58,11 @@
                       
                  	
                  </div>
-                 <div class="card-footer">
-                <a href="view/{{($job->verification_token)}}">
+                 <div class="card-footer"><a href="view/{{($job->verification_token)}}">
                 <button class="btn btn-danger float-right" type="button">View Details
                 </button>
                 </a>
-                @endif</div>
+                </div>
                  </div><br>
 				 @endforeach
 				 {{$jobs->links()}}

@@ -7,12 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
         protected $fillable = [
-        'userid','name','fname','mname','email','phone','dob','course','branch','sgpa','admitcard' 
-        
-        
-        /*'tenthBoard','tenthPercentage'
+        'userid',
+        'name',
+        'fname',
+        'mname',
+        'email',
+        'phone',
+        'dob',
+        'tenthBoard',
+        'tenthPercentage'
         ,'twelfthBoard'
-        ,'twelfthPercentage'
+        ,'twelfthPercentage',
+        'course',
+        'branch',
+        'sgpa',
+        'backlogs',
+        'grad_year',
+        'admitcard', 
+
+        /*
         ,'UG'
         ,'UGPercentage',
         'programEnrolledID',

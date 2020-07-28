@@ -20,11 +20,17 @@ class StudentTable extends Migration
             $table->string('fname')->nullable();
             $table->string('mname')->nullable();
             $table->string('email')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone');
             $table->date('dob')->nullable();
-            $table->string('course')->nullable();
-            $table->string('branch')->nullable();
-            $table->string('sgpa')->nullable();
+            $table->string('tenthBoard');
+            $table->string('tenthPercentage');
+            $table->string('twelfthBoard');
+            $table->string('twelfthPercentage');
+            $table->string('course');
+            $table->string('branch');
+            $table->string('sgpa');
+            $table->string('backlogs')->nullable();
+            $table->string('grad_year');
             $table->string('admitcard')->default('no');
             $table->timestamps();
 

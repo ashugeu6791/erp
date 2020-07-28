@@ -174,9 +174,15 @@ class StudInsertController extends Controller {
            $email = $data['email'];
            $phone = $data['phone'];
            $dob = $data['dob'];
+           $tenthBoard =$data['tenthboard'];
+           $tenthPercentage =$data['tenthpercentage'];
+           $twelfthBoard =$data['twelfthboard'];
+           $twelfthPercentage =$data['twelfthpercentage'];
            $course = $data['course'];
            $branch =$data['branch'];
            $sgpa = $data['sgpa'];
+           $backlogs = $data['backlogs'];
+           $grad_year = $data['gradyear'];
                 $studentdata= Student::firstOrNew(['userid'=>$userid]);
                 $studentdata->userid=$userid;
                 $studentdata->name=$name;
@@ -185,9 +191,15 @@ class StudInsertController extends Controller {
                 $studentdata->email=$email;
                 $studentdata->phone=$phone;
                 $studentdata->dob=$dob;
+                $studentdata->tenthBoard=$tenthBoard;
+                $studentdata->tenthPercentage=$tenthPercentage;
+                $studentdata->twelfthBoard=$twelfthBoard;
+                $studentdata->twelfthPercentage=$twelfthPercentage;
                 $studentdata->course=$course;
                 $studentdata->branch=$branch;
                 $studentdata->sgpa=$sgpa;
+                $studentdata->backlogs=$backlogs;
+                $studentdata->grad_year=$grad_year;
                 $studentdata->save();
 
                 $userdata= User::firstOrNew(['userid'=>$userid]);
@@ -197,6 +209,7 @@ class StudInsertController extends Controller {
                 $userdata->password= Hash::make($phone);
                 $userdata->save();
         }
+        echo'<script>alert("uploaded")</script>';
         return redirect("home");
     }
 

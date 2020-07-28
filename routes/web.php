@@ -58,3 +58,8 @@ Route::get('download', 'CardController@downloadPDF');
 Route::get('/edit','StudInsertController@edit');
 Route::post ( '/search','StudInsertController@search');
 Route::post ( '/change_via_admin','StudInsertController@admin_update_details');
+
+Route::post ( '/add','JobController@add');
+Route::get ( 'view/apply/{token}','JobController@apply');
+Route::get ( 'view/applicants/{token}','JobController@applicants');
+Route::get ( '/view/{token}','JobController@index');
