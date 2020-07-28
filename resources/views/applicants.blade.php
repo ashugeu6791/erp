@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <title>Exam</title>
+    <title>Applicants</title>
 </head>
 <body>
 @extends('layouts.app')
@@ -32,12 +32,28 @@
 @stop
 @endif
 <link rel="stylesheet" href="{{asset('css/exam.css')}}">   
-<div class="main_content">
-        <div class="info pl-5" style="margin-left:2%;margin-right:3%;margin-top:5%">
-        <div class="pr-4 pb-3">
-        <h1>Content Here</h1>
-        </div>
-        </div>
+<div class="row" style="margin-left:2%;margin-right:3%;margin-top:5%">
+	<table class="table" id="">
+		<thead>
+			<tr>
+				<th class="text-center">University Roll</th>
+				<th class="text-center">Student's Name</th>
+				<th class="text-center">Email</th>
+				<th class="text-center">Phone</th>
+                <th class="text-center">Company Applied For</th>
+			</tr>
+		</thead>
+		<tbody >
+            <tr>
+				<td>{{$students__applications[0]->userid ?? ' '}}</td>
+                <td>{{$students__applications[0]->name ?? ' '}}</td>
+                <td>{{$students__applications[0]->email ?? ' '}}</td>
+                <td>{{$students__applications[0]->phone ?? ' '}}</td>
+                <td>{{$students__applications[0]->company ?? ' '}}</td>				
+			</tr>
+		</tbody>
+	</table>
+</div>
 <div>
     <?php echo View::make('footer') ?>
 </div>

@@ -155,9 +155,8 @@ class JobController extends Controller
         if(Auth::user()->UserType == 1 || Auth::user()->UserType == 2)
         {
             
-            $jobs = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
             $applicants = DB::select( "SELECT * FROM students__applications WHERE verification_token = '$token'");
-            return view('applicants')->with('jobs',$jobs)->with('students__applications',$applicants);
+            return view('applicants')->with('students__applications',$applicants);
         }
         elseif(Auth::user()->UserType == 3){
             return response(abort(403,''));
@@ -226,10 +225,8 @@ class JobController extends Controller
             }
 
             else {
-                $id = Auth::user()->userid;
                 $jobs = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
-                $applied = DB::select( "SELECT * FROM students__applications WHERE verification_token = '$token'");
-                return view('view_job')->with('jobs',$jobs)->with('students__applications',$applicants);
+                return view('view_job')->with('jobs',$jobs);
             }
     }
 
