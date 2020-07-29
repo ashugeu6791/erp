@@ -44,13 +44,15 @@
 			</tr>
 		</thead>
 		<tbody >
+        @foreach($students__applications as $applicants)
             <tr>
-				<td>{{$students__applications[0]->userid ?? ' '}}</td>
-                <td>{{$students__applications[0]->name ?? ' '}}</td>
-                <td>{{$students__applications[0]->email ?? ' '}}</td>
-                <td>{{$students__applications[0]->phone ?? ' '}}</td>
-                <td>{{$students__applications[0]->company ?? ' '}}</td>				
+				<td>{{$applicants->userid ?? ' '}}</td>
+                <td>{{$applicants->name ?? ' '}}</td>
+                <td>{{$applicants->email ?? ' '}}</td>
+                <td>{{$applicants->phone ?? ' '}}</td>
+                <td>{{$applicants->company ?? ' '}}</td>				
 			</tr>
+        @endforeach    
 		</tbody>
 	</table>
 </div>
