@@ -7,6 +7,7 @@ use DB;
 use Hash;
 use App\Student;
 use App\User;
+use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -143,7 +144,18 @@ class StudInsertController extends Controller {
      public function uploadtodb(Request $request)
      {
         $upload = $request->file('dbfile') ;
-        $filePath = $upload->getRealPath();
+        $v = Validator::make(
+            [
+                'file'      => $upload,
+                'extension' => strtolower($upload->getClientOriginalExtension()),
+            ],    
+            [
+                'file'          => 'required',
+                'extension'      => 'required|in:csv',
+            ]
+        );
+        if($v->passes()){
+            $filePath = $upload->getRealPath();
 
         $file = fopen($filePath,'r');
         $header = fgetcsv($file);
@@ -211,6 +223,13 @@ class StudInsertController extends Controller {
         }
         echo'<script>alert("uploaded")</script>';
         return redirect("home");
+        }
+        else{
+            echo "<script> alert('Error : CSV File Type Required');</script>";
+            return view("upload");
+        }
+        
+        
     }
 
 }
