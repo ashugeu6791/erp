@@ -82,72 +82,79 @@ class JobController extends Controller
     {
         $userid = Auth::user()->userid;
         $job = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
-        $student = DB::select( "SELECT * FROM students WHERE userid = '$userid'");
-        $branch = json_decode($job[0]->branches);
-        $course = json_decode($job[0]->courses);
-        $year = json_decode($job[0]->year);
-        $lencourse = count($course);
-        $lenbranch = count($branch);
-        $lenyear = count($year);
-        //$len = ($lencourse > $lenbranch) ? ($lencourse > $lenyear ? $lencourse : $lenyear) : ( $lenbranch > $lenyear ? $lenbranch : $lenyear );
-        for ($j=0; $j < $lencourse ; $j++)
+        $applied = DB::select( "SELECT * FROM students__applications WHERE userid = '$userid' AND verification_token = '$token'");
+        if ($applied == NULL)
         {
-                if($course[$j] == $student[0]->course)
-                {
-                    for ($k=0; $k < $lenbranch ; $k++)
+            $student = DB::select( "SELECT * FROM students WHERE userid = '$userid'");
+            $branch = json_decode($job[0]->branches);
+            $course = json_decode($job[0]->courses);
+            $year = json_decode($job[0]->year);
+            $lencourse = count($course);
+            $lenbranch = count($branch);
+            $lenyear = count($year);
+            //$len = ($lencourse > $lenbranch) ? ($lencourse > $lenyear ? $lencourse : $lenyear) : ( $lenbranch > $lenyear ? $lenbranch : $lenyear );
+            for ($j=0; $j < $lencourse ; $j++)
+            {
+                    if($course[$j] == $student[0]->course)
                     {
-                        if($branch[$k] == $student[0]->branch)
+                        for ($k=0; $k < $lenbranch ; $k++)
                         {
-                            for ($l=0; $l < $lenyear ; $l++)
+                            if($branch[$k] == $student[0]->branch)
                             {
-                                if($year[$l] == $student[0]->grad_year)
+                                for ($l=0; $l < $lenyear ; $l++)
                                 {
-                                    $c = 1;
-                                }
-                                else{
-                                    $c = 0;
+                                    if($year[$l] == $student[0]->grad_year)
+                                    {
+                                        $c = 1;
+                                    }
+                                    else{
+                                        $c = 0;
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            $c = 0;
+                            else
+                            {
+                                $c = 0;
+                            }
                         }
                     }
-                }
-                else
-                {
-                    $c = 0;
-                }
+                    else
+                    {
+                        $c = 0;
+                    }
 
-        }
+            }
 
-        if($c==1 && $student[0]->tenthpercentage >= $job[0]->tenthpercentage 
-            && $student[0]->twelfthpercentage >= $job[0]->twelfthpercentage
-            && $student[0]->sgpa >= $job[0]->sgpa
-             && $student[0]->backlogs <= $job[0]->backlogs){
-            $application = new Students_Application([
-                'userid' => $student[0]->userid,
-                'name' => $student[0]->name,
-                'fname' => $student[0]->fname,
-                'mname' => $student[0]->mname,
-                'email' => $student[0]->email,
-                'phone' => $student[0]->phone,
-                'dob' => $student[0]->dob,
-                'course' => $student[0]->course,
-                'branch' => $student[0]->branch,
-                'sgpa' => $student[0]->sgpa,
-                'company' => $job[0]->company,
-                'designation' => $job[0]->designation,
-                'package' => $job[0]->package,
-                'apply_by' => $job[0]->apply_by,
-                'verification_token' => $token,
-                   ]);
-            $application->save();
-        }
+            if($c==1 && $student[0]->tenthpercentage >= $job[0]->tenthpercentage 
+                && $student[0]->twelfthpercentage >= $job[0]->twelfthpercentage
+                && $student[0]->sgpa >= $job[0]->sgpa
+                && $student[0]->backlogs <= $job[0]->backlogs){
+                $application = new Students_Application([
+                    'userid' => $student[0]->userid,
+                    'name' => $student[0]->name,
+                    'fname' => $student[0]->fname,
+                    'mname' => $student[0]->mname,
+                    'email' => $student[0]->email,
+                    'phone' => $student[0]->phone,
+                    'dob' => $student[0]->dob,
+                    'course' => $student[0]->course,
+                    'branch' => $student[0]->branch,
+                    'sgpa' => $student[0]->sgpa,
+                    'company' => $job[0]->company,
+                    'designation' => $job[0]->designation,
+                    'package' => $job[0]->package,
+                    'apply_by' => $job[0]->apply_by,
+                    'verification_token' => $token,
+                    ]);
+                $application->save();
+            }
         else{
             return response(abort(403,''));
         }
+    }
+    else{
+        return response(abort(403,''));
+    }
     }
 
     public function applicants($token)
@@ -169,6 +176,10 @@ class JobController extends Controller
 
                     $userid = Auth::user()->userid;
                     $job = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
+                    $applied = DB::select( "SELECT * FROM students__applications WHERE userid = '$userid' AND verification_token = '$token'");
+                    if ($applied == NULL)
+                    {
+                    $ap = 0;
                     $student = DB::select( "SELECT * FROM students WHERE userid = '$userid'");
                     $branch = json_decode($job[0]->branches);
                     $course = json_decode($job[0]->courses);
@@ -218,11 +229,14 @@ class JobController extends Controller
                     else{
                             $t = 0;
                     }
-
+                }
+                else{
+                    $ap = 1;
+                }
                     $jobs = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
                     $data = $t;
-                    return view('view_job')->with('data', $data)->with('jobs',$jobs);
-            }
+                    return view('view_job')->with('data', $data)->with('ap', $ap)->with('jobs',$jobs);
+                }
 
             else {
                 $jobs = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
