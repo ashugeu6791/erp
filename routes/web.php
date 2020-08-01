@@ -63,3 +63,4 @@ Route::post ( '/add','JobController@add');
 Route::get ( 'view/apply/{token}','JobController@apply');
 Route::get ( 'view/applicants/{token}','JobController@applicants');
 Route::get ( '/view/{token}','JobController@index');
+Route::get('view/applicants/export/{token}', 'JobController@export')->name('export');

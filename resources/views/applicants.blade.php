@@ -1,5 +1,5 @@
 <!--
-    TODO:Automatic fetch from database
+    TODO: Spreadsheet download work 
     Kunal Aaryen Sinha
     - 8709162797
 -->
@@ -33,6 +33,7 @@
 @endif
 <link rel="stylesheet" href="{{asset('css/exam.css')}}">   
 <div class="row" style="margin-left:2%;margin-right:3%;margin-top:5%">
+<!--<a class="btn btn-warning" href="export/{{($jobs[0]->verification_token)}}">Download</a>-->
 	<table class="table" id="">
 		<thead>
 			<tr>

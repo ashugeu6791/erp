@@ -11,6 +11,7 @@ use App\Students_Application;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JobController extends Controller
 {
@@ -163,7 +164,8 @@ class JobController extends Controller
         {
             
             $applicants = DB::select( "SELECT * FROM students__applications WHERE verification_token = '$token'");
-            return view('applicants')->with('students__applications',$applicants);
+            $jobs = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
+            return view('applicants')->with('jobs',$jobs)->with('students__applications',$applicants);
         }
         elseif(Auth::user()->UserType == 3){
             return response(abort(403,''));
@@ -245,6 +247,10 @@ class JobController extends Controller
     }
 
 
-
+    public function export($token) 
+    {
+        $applicants = DB::select( "SELECT * FROM students__applications WHERE verification_token = '$token'");
+        dd($applicants)
+    }
 
 }
