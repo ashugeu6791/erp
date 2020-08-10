@@ -66,6 +66,7 @@ class StudInsertController extends Controller {
 
     $userdata = new User([
         'userid' => $request->get('userid'),
+        'email' => $request->get('email'),
         'username' => $request->get('username'),
         'UserType' => '3',
         'password' => Hash::make($request->get('phone'))
@@ -216,6 +217,7 @@ class StudInsertController extends Controller {
 
                 $userdata= User::firstOrNew(['userid'=>$userid]);
                 $userdata->userid=$userid;
+                $userdata->email=$email;
                 $userdata->username=$name;
                 $userdata->UserType='3';
                 $userdata->password= Hash::make($phone);
