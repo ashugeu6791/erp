@@ -23,6 +23,8 @@ class Student extends Model
         'sgpa',
         'backlogs',
         'grad_year',
+        'p_address',
+        'c_address',
         'admitcard', 
 
         /*

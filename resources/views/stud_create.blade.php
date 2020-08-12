@@ -99,6 +99,38 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="tenthBoard" class="col-md-4 col-form-label text-md-right">{{ __('10th Board') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tenthBoard" type="tenthBoard" class="form-control @error('tenthBoard') is-invalid @enderror" name="tenthBoard"  autocomplete="new-tenthBoard">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tenthPercentage" class="col-md-4 col-form-label text-md-right">{{ __('10th Percentage') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tenthPercentage" type="tenthPercentage" class="form-control @error('tenthPercentage') is-invalid @enderror" name="tenthPercentage"  autocomplete="new-tenthPercentage">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="twelfthBoard" class="col-md-4 col-form-label text-md-right">{{ __('12th Board') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="twelfthBoard" type="twelfthBoard" class="form-control @error('twelfthBoard') is-invalid @enderror" name="twelfthBoard"  autocomplete="new-twelfthBoard">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="twelfthPercentage" class="col-md-4 col-form-label text-md-right">{{ __('12th Percentage') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="twelfthPercentage" type="twelfthPercentage" class="form-control @error('twelfthPercentage') is-invalid @enderror" name="twelfthPercentage"  autocomplete="new-twelfthPercentage">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="course" class="col-md-4 col-form-label text-md-right">{{ __('Course') }}</label>
 
                             <div class="col-md-6">
@@ -111,6 +143,14 @@
 
                             <div class="col-md-6">
                                 <input id="branch" type="branch" class="form-control @error('branch') is-invalid @enderror" name="branch"  autocomplete="new-branch">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="grad_year" class="col-md-4 col-form-label text-md-right">{{ __('Graduation Year') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="grad_year" type="grad_year" class="form-control @error('grad_year') is-invalid @enderror" name="grad_year"  autocomplete="new-grad_year">
                             </div>
                         </div>
 

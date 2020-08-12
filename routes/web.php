@@ -26,6 +26,10 @@ Route::view('/examtypes',"examtypes");
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/changePassword','HomeController@ChangePasswordview');
+Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
+Route::get('/profile','HomeController@edit');
+Route::post('/save','HomeController@save');
 
 Route::get('/discussion', 'SelectionController@discussion')->name('discussion');
 Route::get('/exam', 'SelectionController@exam')->name('exam');

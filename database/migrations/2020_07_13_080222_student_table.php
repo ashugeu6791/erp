@@ -28,9 +28,11 @@ class StudentTable extends Migration
             $table->string('twelfthPercentage');
             $table->string('course');
             $table->string('branch');
-            $table->string('sgpa');
+            $table->string('sgpa')->nullable();
             $table->string('backlogs')->nullable();
             $table->string('grad_year');
+            $table->string('p_address')->nullable();
+            $table->string('c_address')->nullable();
             $table->string('admitcard')->default('no');
             $table->timestamps();
 

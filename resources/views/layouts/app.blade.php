@@ -143,11 +143,28 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->UserType == 3)
+                                <a class="dropdown-item" href="/profile">
+                                        {{ __('Edit Profile') }}
+                                </a>
+                                <a class="dropdown-item" href="/changePassword">
+                                        {{ __('Change Password') }}
+                                </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                @else
+                                <a class="dropdown-item" href="/changePassword">
+                                        {{ __('Change Password') }}
+                                </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

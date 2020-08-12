@@ -60,8 +60,13 @@ class StudInsertController extends Controller {
         'email' => $request->get('email'),
         'phone' => $request->get('phone'),
         'dob' => $request->get('dob'),
+        'tenthBoard' => $request->get('tenthBoard'),
+        'tenthPercentage' => $request->get('tenthPercentage'),
+        'twelfthBoard' => $request->get('twelfthBoard'),
+        'twelfthPercentage' => $request->get('twelfthPercentage'),
         'course' => $request->get('course'),
-        'branch' => $request->get('branch')
+        'branch' => $request->get('branch'),
+        'grad_year' => $request->get('grad_year')
     ]);
 
     $userdata = new User([

@@ -11,7 +11,7 @@
         <div class="col-md-8">
         <div class="card pt-3"  style="border-radius:10px 10px 10px 10px; opacity:0.85; display:inline-block; margin-top:3%;">
                 <div class="card-body">
-                <img src="http://btechgeu.in/images/logo_graphic_era.gif" style='width:100%;height:20%'>
+                <img src="{{ asset('logo.gif') }}" style='width:100%;height:20%'>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
