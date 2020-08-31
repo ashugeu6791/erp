@@ -35,7 +35,19 @@
 <div class="main_content">
         <div class="info pl-5" style="margin-left:2%;margin-right:3%;margin-top:5%">
         <div class="pr-4 pb-3">
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+               {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         @foreach($jobs as $job)
+        <form>
         @csrf
                  <div class="card">
                  	<div class="card-body">
@@ -58,12 +70,20 @@
                       
                  	
                  </div>
-                 <div class="card-footer"><a href="view/{{($job->verification_token)}}">
+                 <div class="card-footer">
+                 @if((Auth::user()->UserType) == '2' || Auth::user()->UserType == '1')
+                 <a href="delete/{{($job->verification_token)}}">
+                <button class="btn btn-danger float-right" type="button">Delete
+                </button>
+                </a>
+                @endif
+                 <a href="view/{{($job->verification_token)}}">
                 <button class="btn btn-danger float-right" type="button">View Details
                 </button>
                 </a>
                 </div>
                  </div><br>
+                 </form>
 				 @endforeach
 				 {{$jobs->links()}}
 

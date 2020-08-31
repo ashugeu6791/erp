@@ -246,11 +246,22 @@ class JobController extends Controller
             }
     }
 
+    public function delete($token) 
+    { 
+        $c = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
+        if($c == NULL){
+            return redirect()->back()->with("error","Token Error. Try Again!");
+        }
+        else{
+            DB::delete( "DELETE FROM jobs WHERE verification_token = '$token'");
+            return redirect()->back()->with("success","Job Deleted");
+        }
+    }
 
     public function export($token) 
     {
         $applicants = DB::select( "SELECT * FROM students__applications WHERE verification_token = '$token'");
-        dd($applicants)
+        dd($applicants);
     }
 
 }
