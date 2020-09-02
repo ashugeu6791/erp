@@ -35,6 +35,15 @@
 <div class="main_content">
         <div class="info pl-5" style="margin-left:2%;margin-right:3%;margin-top:5%">
         <div class="pr-4 pb-3">
+        <form action="/search-keyword" method="POST" role="search">
+                    {{ csrf_field() }}
+                    <div class="input-group pb-3">
+                    <div style="margin-top:0.5%; margin-right:1%; width:93.7%">
+                        <input type="text" class="form-control" name="q" placeholder="Search with ' Company Name '">
+                    </div>
+                        <button type="submit" class="btn btn-danger">Search</button>
+                    </div>
+        </form>
 
         @if (session('error'))
             <div class="alert alert-danger">
@@ -53,7 +62,7 @@
                  	<div class="card-body">
                  		<div class="row px-0 no-gutters">
                  			<div class="col-2 pl-5">
-                             <i class="fas fa-award pl-2" style="font-size:650%;color:grey"></i>
+                             <i class="fab fa-black-tie" style="font-size:650%;color:purple"></i>
                  			</div>
                  			<div class="col-6">
                  				<h6 class="card-title"></h6>
@@ -84,8 +93,8 @@
                 </div>
                  </div><br>
                  </form>
-				 @endforeach
-				 {{$jobs->links()}}
+		 @endforeach
+         {{$jobs->links()}}
 
 
       </div>

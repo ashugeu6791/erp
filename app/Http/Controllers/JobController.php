@@ -258,6 +258,12 @@ class JobController extends Controller
         }
     }
 
+    public function search(Request $request) {
+        $q = $request->input('q');
+        $jobs = DB::table('jobs')->where('company',$q)->simplepaginate(7);
+        return view ('jobs')->with('jobs',$jobs);
+    }
+
     public function export($token) 
     {
         $applicants = DB::select( "SELECT * FROM students__applications WHERE verification_token = '$token'");
