@@ -185,12 +185,14 @@
                             <label for="eligible_course"class="col-md-4 col-form-label text-md-right">{{ __('Course(s) Eligible') }}</label>
 
                             <div class="col-md-6">
-                            <label for="course1"> <input type="checkbox" id="course1" name="eligible_course[]" value="B.tech"> B.Tech</label>
-                            <label for="course2"> <input type="checkbox" id="course2" name="eligible_course[]" value="course2"> Course 2</label>
-                            <label for="course3"> <input type="checkbox" id="course3" name="eligible_course[]" value="course3"> Course 3</label>
-                            <label for="course4"> <input type="checkbox" id="course4" name="eligible_course[]" value="course4"> Course 4</label>
-                            <label for="course5"> <input type="checkbox" id="course5" name="eligible_course[]" value="course5"> Course 5</label>
-                            <label for="course6"> <input type="checkbox" id="course6" name="eligible_course[]" value="course6"> Course 6</label>
+                            <select class=" form-control" name = 'eligible_course[]' multiple required autofocus>
+                                <option value='B.tech'>B.tech</option>
+                                <option value='Course 2'>Course 2</option>
+                                <option value='Course 3'>Course 3</option>
+                                <option value='Course 4'>Course 4</option>
+                                <option value='Course 5'>Course 5</option>
+                            </select>
+                            <p><i>Select Multiple by holding Ctrl key</i></p>
                             </div>
                         </div>
 
@@ -198,12 +200,15 @@
                             <label for="eligible_branch"class="col-md-4 col-form-label text-md-right">{{ __('Branch(s) Eligible') }}</label>
 
                             <div class="col-md-6">
-                            <label for="course1"> <input type="checkbox" id="course1" name="eligible_branch[]" value="B.tech"> Branch 1</label>
-                            <label for="course2"> <input type="checkbox" id="course2" name="eligible_branch[]" value="course2"> Branch 2</label>
-                            <label for="course3"> <input type="checkbox" id="course3" name="eligible_branch[]" value="course3"> Branch 3</label>
-                            <label for="course4"> <input type="checkbox" id="course4" name="eligible_branch[]" value="course4"> Branch 4</label>
-                            <label for="course5"> <input type="checkbox" id="course5" name="eligible_branch[]" value="course5"> Branch 5</label>
-                            <label for="course6"> <input type="checkbox" id="course6" name="eligible_branch[]" value="course6"> Branch 6</label>
+                            <select class=" form-control" name = 'eligible_branch[]' multiple required autofocus>
+                                <option value='Branch 1'>Branch 1</option>
+                                <option value='Branch 2'>Branch 2</option>
+                                <option value='Branch 3'>Branch 3</option>
+                                <option value='Branch 4'>Branch 4</option>
+                                <option value='Branch 5'>Branch 5</option>
+                            </select>
+                            <p><i>Select Multiple by holding Ctrl key</i></p>
+                            </div>
                             </div>
                         </div>
 
