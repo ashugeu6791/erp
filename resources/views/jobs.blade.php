@@ -62,7 +62,7 @@
                  	<div class="card-body">
                  		<div class="row px-0 no-gutters">
                  			<div class="col-2 pl-5">
-                             <i class="fab fa-black-tie" style="font-size:650%;color:purple"></i>
+                             <i class="fab fa-black-tie" style="font-size:650%; color:purple;"></i>
                  			</div>
                  			<div class="col-6">
                  				<h6 class="card-title"></h6>

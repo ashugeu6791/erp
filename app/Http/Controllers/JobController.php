@@ -52,7 +52,7 @@ class JobController extends Controller
     }
 
     $job = new Job([
-        'company' => $request->get('company'),
+        'company' => strtolower($request->get('company')),
         'company_description' => $request->get('about'),
         'designation' => $request->get('designation'),
         'role' => $request->get('roles'),
@@ -259,7 +259,7 @@ class JobController extends Controller
     }
 
     public function search(Request $request) {
-        $q = $request->input('q');
+        $q = strtolower($request->input('q'));
         $jobs = DB::table('jobs')->where('company',$q)->simplepaginate(7);
         return view ('jobs')->with('jobs',$jobs);
     }
