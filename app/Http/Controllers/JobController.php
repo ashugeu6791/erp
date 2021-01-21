@@ -8,10 +8,12 @@ use App\Student;
 use App\User;
 use App\Job;
 use App\Students_Application;
+use Excel;
+use Maatwebsite\Excel\Concerns\FromCollection;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Maatwebsite\Excel\Facades\Excel;
+// use Maatwebsite\Excel\Facades\Excel;
 
 class JobController extends Controller
 {
@@ -21,6 +23,9 @@ class JobController extends Controller
     }
     	
    public function add(Request $request) {
+    $this->validate($request, [
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
     function crypto_rand_secure($min, $max)
     {
         $range = $max - $min;
@@ -51,8 +56,17 @@ class JobController extends Controller
         return $token;
     }
 
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $company = strtolower($request->get('company'));
+        $name = $company.time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/company');
+        $image->move($destinationPath, $name);
+    }
+
     $job = new Job([
         'company' => strtolower($request->get('company')),
+        'image' => $name,
         'company_description' => $request->get('about'),
         'designation' => $request->get('designation'),
         'role' => $request->get('roles'),
@@ -74,6 +88,26 @@ class JobController extends Controller
                                             // changes anything in the html view then wrong data is not passed.
         ]);
     $job->save();
+
+    $token = $job->verification_token;
+    $job = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
+    $branch = json_decode($job[0]->branches);
+    $course = json_decode($job[0]->courses);
+    $year = json_decode($job[0]->year);
+    $tenthpercentage = $job[0]->tenthpercentage;
+    $twelfthpercentage = $job[0]->twelfthpercentage;
+    $sgpa = $job[0]->sgpa;
+    $backlogs = $job[0]->backlogs;
+    $geu = count(Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('university' , '=' , 'GEU')->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->get()->toArray());
+    $gehu = count(Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('university' , '=' , 'GEHU')->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->get()->toArray());
+    $gehub = count(Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('university' , '=' , 'GEHUB')->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->get()->toArray());
+    
+    $data = DB::table('jobs')
+                ->where('verification_token', $token)
+               ->update(['eligibles_geu' =>$geu,
+                        'eligibles_gehu' =>$gehu,
+                        'eligibles_gehub' =>$gehub]);
+
     echo '<script>alert("Job Added") </script>';
     return view ("add_jobs");
     }
@@ -93,6 +127,7 @@ class JobController extends Controller
             $lencourse = count($course);
             $lenbranch = count($branch);
             $lenyear = count($year);
+            $c = 0;
             //$len = ($lencourse > $lenbranch) ? ($lencourse > $lenyear ? $lencourse : $lenyear) : ( $lenbranch > $lenyear ? $lenbranch : $lenyear );
             for ($j=0; $j < $lencourse ; $j++)
             {
@@ -107,27 +142,16 @@ class JobController extends Controller
                                     if($year[$l] == $student[0]->grad_year)
                                     {
                                         $c = 1;
-                                    }
-                                    else{
-                                        $c = 0;
+                                        break;
                                     }
                                 }
                             }
-                            else
-                            {
-                                $c = 0;
-                            }
                         }
                     }
-                    else
-                    {
-                        $c = 0;
-                    }
-
             }
 
-            if($c==1 && $student[0]->tenthpercentage >= $job[0]->tenthpercentage 
-                && $student[0]->twelfthpercentage >= $job[0]->twelfthpercentage
+            if($c==1 && $student[0]->tenthPercentage >= $job[0]->tenthpercentage 
+                && $student[0]->twelfthPercentage >= $job[0]->twelfthpercentage
                 && $student[0]->sgpa >= $job[0]->sgpa
                 && $student[0]->backlogs <= $job[0]->backlogs){
                 $application = new Students_Application([
@@ -148,6 +172,7 @@ class JobController extends Controller
                     'verification_token' => $token,
                     ]);
                 $application->save();
+                return redirect()->back()->with("success","Applied");
             }
         else{
             return response(abort(403,''));
@@ -162,15 +187,115 @@ class JobController extends Controller
     {
         if(Auth::user()->UserType == 1 || Auth::user()->UserType == 2)
         {
-            
-            $applicants = DB::select( "SELECT * FROM students__applications WHERE verification_token = '$token'");
-            $jobs = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
-            return view('applicants')->with('jobs',$jobs)->with('students__applications',$applicants);
+            $applicants = Students_Application::where('verification_token' , $token)->get()->toArray();
+            $Filename ='Applicants.csv';
+            Header('Content-Type: text/csv; charset=utf-8');
+            Header('Content-Type: application/force-download');
+            Header('Content-Disposition: attachment; filename='.$Filename.'');
+            // create a file pointer connected to the output stream
+            $output = fopen('php://output', 'w');
+            //fputcsv($output, $selected_array);
+            foreach ($applicants as $row){
+                fputcsv($output, $row);
+            }
+            fclose($output);
         }
         elseif(Auth::user()->UserType == 3){
             return response(abort(403,''));
         }
     }
+
+
+    public function eligibles_geu($token)
+    {
+        if(Auth::user()->UserType == 1 || Auth::user()->UserType == 2)
+        {   
+            $job = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
+            $branch = json_decode($job[0]->branches);
+            $course = json_decode($job[0]->courses);
+            $year = json_decode($job[0]->year);
+            $tenthpercentage = $job[0]->tenthpercentage;
+            $twelfthpercentage = $job[0]->twelfthpercentage;
+            $sgpa = $job[0]->sgpa;
+            $backlogs = $job[0]->backlogs;
+            $eligibles = Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('university' , '=' , 'GEU')->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->get()->toArray();
+            $Filename ='Eligibles_GEU.csv';
+            Header('Content-Type: text/csv; charset=utf-8');
+            Header('Content-Type: application/force-download');
+            Header('Content-Disposition: attachment; filename='.$Filename.'');
+            // create a file pointer connected to the output stream
+            $output = fopen('php://output', 'w');
+            //fputcsv($output, $selected_array);
+            foreach ($eligibles as $row){
+                fputcsv($output, $row);
+            }
+            fclose($output);
+        }
+        elseif(Auth::user()->UserType == 3){
+            return response(abort(403,''));
+        }
+    }
+
+    public function eligibles_gehu($token)
+    {
+        if(Auth::user()->UserType == 1 || Auth::user()->UserType == 2)
+        {
+            $job = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
+            $branch = json_decode($job[0]->branches);
+            $course = json_decode($job[0]->courses);
+            $year = json_decode($job[0]->year);
+            $tenthpercentage = $job[0]->tenthpercentage;
+            $twelfthpercentage = $job[0]->twelfthpercentage;
+            $sgpa = $job[0]->sgpa;
+            $backlogs = $job[0]->backlogs;
+            $eligibles = Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('university' , '=' , 'GEHU')->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->get()->toArray();
+            $Filename ='Eligibles_GEHU.csv';
+            Header('Content-Type: text/csv; charset=utf-8');
+            Header('Content-Type: application/force-download');
+            Header('Content-Disposition: attachment; filename='.$Filename.'');
+            // create a file pointer connected to the output stream
+            $output = fopen('php://output', 'w');
+            //fputcsv($output, $selected_array);
+            foreach ($eligibles as $row){
+                fputcsv($output, $row);
+            }
+            fclose($output);
+        }
+        elseif(Auth::user()->UserType == 3){
+            return response(abort(403,''));
+        }
+    }
+
+
+    public function eligibles_gehub($token)
+    {
+        if(Auth::user()->UserType == 1 || Auth::user()->UserType == 2)
+        {
+            $job = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
+            $branch = json_decode($job[0]->branches);
+            $course = json_decode($job[0]->courses);
+            $year = json_decode($job[0]->year);
+            $tenthpercentage = $job[0]->tenthpercentage;
+            $twelfthpercentage = $job[0]->twelfthpercentage;
+            $sgpa = $job[0]->sgpa;
+            $backlogs = $job[0]->backlogs;
+            $eligibles = Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('university' , '=' , 'GEHUB')->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->get()->toArray();
+            Header('Content-Type: text/csv; charset=utf-8');
+            Header('Content-Type: application/force-download');
+            Header('Content-Disposition: attachment; filename='.$Filename.'');
+            // create a file pointer connected to the output stream
+            $output = fopen('php://output', 'w');
+            //fputcsv($output, $selected_array);
+            foreach ($eligibles as $row){
+                fputcsv($output, $row);
+            }
+            fclose($output);
+        }
+        elseif(Auth::user()->UserType == 3){
+            return response(abort(403,''));
+        }
+    }
+
 
     public function index($token)
     {
@@ -189,6 +314,7 @@ class JobController extends Controller
                     $lencourse = count($course);
                     $lenbranch = count($branch);
                     $lenyear = count($year);
+                    $c =0;
                     for ($j=0; $j < $lencourse ; $j++)
                     {
                             if($course[$j] == $student[0]->course)
@@ -203,30 +329,18 @@ class JobController extends Controller
                                             {
                                                 $c = 1;
                                             }
-                                            else{
-                                                $c = 0;
-                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        $c = 0;
                                     }
                                 }
                             }
-                            else
-                            {
-                                $c = 0;
-                            }
-
                     }
 
-                    if($c==1 && $student[0]->tenthpercentage >= $job[0]->tenthpercentage 
-                        && $student[0]->twelfthpercentage >= $job[0]->twelfthpercentage
+                    if($c==1 && $student[0]->tenthPercentage >= $job[0]->tenthpercentage 
+                        && $student[0]->twelfthPercentage >= $job[0]->twelfthpercentage
                         && $student[0]->sgpa >= $job[0]->sgpa
                         && $student[0]->backlogs <= $job[0]->backlogs)
                         {
-                            $t == 1;
+                            $t = 1;
                         }
                     else{
                             $t = 0;
@@ -234,6 +348,7 @@ class JobController extends Controller
                 }
                 else{
                     $ap = 1;
+                    $t = 1;
                 }
                     $jobs = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
                     $data = $t;
@@ -264,10 +379,13 @@ class JobController extends Controller
         return view ('jobs')->with('jobs',$jobs);
     }
 
+    /*
+
     public function export($token) 
     {
         $applicants = DB::select( "SELECT * FROM students__applications WHERE verification_token = '$token'");
         dd($applicants);
     }
+    */
 
 }

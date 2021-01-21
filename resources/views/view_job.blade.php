@@ -36,6 +36,11 @@
         <div class="info pl-5" style="margin-left:2%;margin-right:3%;margin-top:5%">
         <div class="pr-4 pb-3">
         @csrf
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
                  <div class="card">
                  	<div class="card-body">
                  		<h4>{{$jobs[0]->company}} : {{$jobs[0]->designation}}</h4><br>

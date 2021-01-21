@@ -62,7 +62,11 @@
                  	<div class="card-body">
                  		<div class="row px-0 no-gutters">
                  			<div class="col-2 pl-5">
-                             <i class="fab fa-black-tie" style="font-size:650%; color:purple;"></i>
+                             @if ($job->image)
+                                <img src="{{ asset('images/company/'.$job->image) }}" style="width: 120px; height: 120px;">
+                            @else
+                                <i class="fab fa-black-tie" style="font-size:650%; color:purple;"></i>
+                            @endif
                  			</div>
                  			<div class="col-6">
                  				<h6 class="card-title"></h6>
@@ -85,6 +89,24 @@
                 <button class="btn btn-danger float-right" type="button">Delete
                 </button>
                 </a>
+                <a href="applicants/{{($job->verification_token)}}">
+                <button class="btn btn-danger float-right" type="button">Download Applied Applicants List
+                </button>
+                </a>
+
+                <div class="btn-group float-right">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="eligibles">
+                    Download Eligible Applicants List
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="eligibles_geu/{{($job->verification_token)}}"><b>Graphic Era, Dehradun</b> ({{$job->eligibles_geu}})</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="eligibles_gehu/{{($job->verification_token)}}"><b>Graphic Era Hill University</b> ({{$job->eligibles_gehu}})</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="eligibles_gehub/{{($job->verification_token)}}"><b>Graphic Era Hill University - Bhimtal</b> ({{$job->eligibles_gehub}})</a>
+                    </div>
+                </div>
+
                 @endif
                  <a href="view/{{($job->verification_token)}}">
                 <button class="btn btn-danger float-right" type="button">View Details

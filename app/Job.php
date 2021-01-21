@@ -9,6 +9,7 @@ class Job extends Model
     protected $fillable = [
         'company',
         'company_description',
+        'image',
         'designation',
         'role',
         'jlocation',
@@ -25,6 +26,9 @@ class Job extends Model
         'courses',
         'branches',
         'year',
+        'eligibles_geu',
+        'eligibles_gehu',
+        'eligibles_gehub',
         'verification_token'
     ];
 

@@ -42,7 +42,7 @@
         <div class="col-md-8" style="padding-top:4%">
             <div class="card shadow p-3 mb-5 bg-white rounde">
                 <div class="card-body">
-                    <form method="POST" action="add">
+                    <form method="POST" action="add" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row" style="padding-top:5%">
@@ -54,6 +54,15 @@
 
                             <div class="col-md-6">
                                 <input id="company" type="text" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ old('company') }}" required autocomplete="company" autofocus>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Company Icon/Logo') }}</label>
+
+                            <div class="col-md-6">
+                            <input id="image" type="file" name="image" class="form-control" autofocus>
 
                             </div>
                         </div>

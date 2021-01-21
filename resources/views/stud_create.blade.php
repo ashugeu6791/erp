@@ -130,6 +130,21 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                        <label for="university" class="col-md-4 col-form-label text-md-right">{{ __('University') }}</label>
+                            <div class="col-md-6">
+                                <select id="university" class=" form-control" name = 'university' required autofocus>
+                                    <option hidden disabled selected value></option>
+                                    <option value="GEU">Graphic Era (Deemed to be) University</option>
+                                    <option value="GEHU">Graphic Era Hill University</option>
+                                    <option value="GEHUB">Graphic Era Hill University Bhimtal</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        
+
                         <div class="form-group row">
                             <label for="course" class="col-md-4 col-form-label text-md-right">{{ __('Course') }}</label>
 

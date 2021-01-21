@@ -23,13 +23,14 @@ class StudentTable extends Migration
             $table->string('phone');
             $table->date('dob')->nullable();
             $table->string('tenthBoard');
-            $table->string('tenthPercentage');
+            $table->float('tenthPercentage');
             $table->string('twelfthBoard');
-            $table->string('twelfthPercentage');
+            $table->float('twelfthPercentage');
+            $table->string('university');
             $table->string('course');
             $table->string('branch');
-            $table->string('sgpa')->nullable();
-            $table->string('backlogs')->nullable();
+            $table->float('sgpa')->nullable();
+            $table->integer('backlogs')->default(0);
             $table->string('grad_year');
             $table->string('p_address')->nullable();
             $table->string('c_address')->nullable();

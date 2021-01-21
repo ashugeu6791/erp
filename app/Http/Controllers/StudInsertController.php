@@ -64,6 +64,7 @@ class StudInsertController extends Controller {
         'tenthPercentage' => $request->get('tenthPercentage'),
         'twelfthBoard' => $request->get('twelfthBoard'),
         'twelfthPercentage' => $request->get('twelfthPercentage'),
+        'university'=> $request->get('university'),
         'course' => $request->get('course'),
         'branch' => $request->get('branch'),
         'grad_year' => $request->get('grad_year')

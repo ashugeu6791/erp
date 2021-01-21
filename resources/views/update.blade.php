@@ -95,6 +95,7 @@
                                 <input id="course" type="course" class="form-control @error('course') is-invalid @enderror" name="course"  autocomplete="new-course">
                             </div>
                         </div>
+                    
 
                         <div class="form-group row">
                             <label for="branch" class="col-md-4 col-form-label text-md-right">{{ __('Branch') }}</label>

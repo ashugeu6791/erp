@@ -17,6 +17,7 @@ class CreateJobsTable extends Migration
             $table->id();
             $table->string('company');
             $table->text('company_description');
+            $table->string('image')->nullable(); 
             $table->string('designation');
             $table->text('role');
             $table->string('jlocation');
@@ -26,13 +27,16 @@ class CreateJobsTable extends Migration
             $table->string('bond');
             $table->date('apply_by');
             $table->text('selection_details');
-            $table->string('tenthpercentage');
-            $table->string('twelfthpercentage');
-            $table->string('sgpa');
-            $table->string('backlogs');
+            $table->float('tenthpercentage');
+            $table->float('twelfthpercentage');
+            $table->float('sgpa');
+            $table->integer('backlogs');
             $table->json('courses');
             $table->json('branches');
             $table->json('year');
+            $table->integer('eligibles_geu')->nullable();
+            $table->integer('eligibles_gehu')->nullable();
+            $table->integer('eligibles_gehub')->nullable();
             $table->string('verification_token');
             $table->timestamps();
         });

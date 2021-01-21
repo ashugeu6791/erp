@@ -18,6 +18,7 @@ class Student extends Model
         'tenthPercentage'
         ,'twelfthBoard'
         ,'twelfthPercentage',
+        'university',
         'course',
         'branch',
         'sgpa',
