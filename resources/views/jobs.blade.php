@@ -106,6 +106,10 @@
                         <a class="dropdown-item" href="eligibles_gehub/{{($job->verification_token)}}"><b>Graphic Era Hill University - Bhimtal</b> ({{$job->eligibles_gehub}})</a>
                     </div>
                 </div>
+                <a href="mail/{{($job->verification_token)}}">
+                <button class="btn btn-secondary float-right" type="button"><i class="far fa-envelope"></i>
+                </button>
+                </a>
 
                 @endif
                  <a href="view/{{($job->verification_token)}}">

@@ -66,10 +66,13 @@ Route::post ( '/change_via_admin','StudInsertController@admin_update_details');
 Route::post ( '/add','JobController@add');
 Route::get ( 'view/apply/{token}','JobController@apply');
 Route::get ( 'applicants/{token}','JobController@applicants');
+Route::get ( 'view/applicants/{token}','JobController@applicants');
 Route::get ( 'eligibles_geu/{token}','JobController@eligibles_geu');
 Route::get ( 'eligibles_gehu/{token}','JobController@eligibles_gehu');
 Route::get ( 'eligibles_gehub/{token}','JobController@eligibles_gehub');
 Route::get ( '/view/{token}','JobController@index');
 Route::get ( '/delete/{token}','JobController@delete');
 Route::post ( '/search-keyword','JobController@search');
+
+Route::get ( 'mail/{token}','JobController@sendMail');
 //Route::get('view/applicants/export/{token}', 'JobController@export')->name('export');

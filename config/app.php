@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Snowfire\Beautymail\BeautymailServiceProvider::class,
 
         /*
          * Package Service Providers...
