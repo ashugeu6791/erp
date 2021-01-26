@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <title>Exam</title>
+    <title>Job</title>
 </head>
 <body>
 @extends('layouts.app')
@@ -51,7 +51,7 @@
                          {{$jobs[0]->company_description}}
 
                          @if((Auth::user()->UserType) == '2' || Auth::user()->UserType == '1')
-                         <a href="applicants/{{($jobs[0]->verification_token)}}">
+                         <a href="/applicants/{{($jobs[0]->verification_token)}}">
                             <button class="btn btn-danger float-right" type="button">View Applicants</button>
                          </a>
 

@@ -102,11 +102,27 @@ class JobController extends Controller
     $gehu = count(Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('university' , '=' , 'GEHU')->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->get()->toArray());
     $gehub = count(Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('university' , '=' , 'GEHUB')->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->get()->toArray());
     
+    $emails = Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->pluck('email')->toArray();
+            
+
+    $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+    foreach($emails as $email)
+    {
+        $beautymail->send('notify', [], function($message) use ($email)
+        {
+            $message->from('donotreply@admin.com');
+            $message->to($email);
+            $message->subject('Job Posting Alert');
+        });
+    }
+
     $data = DB::table('jobs')
                 ->where('verification_token', $token)
                ->update(['eligibles_geu' =>$geu,
                         'eligibles_gehu' =>$gehu,
                         'eligibles_gehub' =>$gehub]);
+
+    
 
     echo '<script>alert("Job Added") </script>';
     return view ("add_jobs");
@@ -115,6 +131,7 @@ class JobController extends Controller
 
     public function apply($token)
     {
+        
         $userid = Auth::user()->userid;
         $job = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
         $applied = DB::select( "SELECT * FROM students__applications WHERE userid = '$userid' AND verification_token = '$token'");
@@ -172,6 +189,19 @@ class JobController extends Controller
                     'verification_token' => $token,
                     ]);
                 $application->save();
+
+                //Confirmation Mail 
+                $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+                $beautymail->send('mail', [], function($message) 
+                {
+                    $message
+                        ->from('donotreply@admin.com')
+                        ->to(Auth::user()->email, Auth::user()->username)
+                        ->subject('Applied Succesfully');
+                });
+
+
+                
                 return redirect()->back()->with("success","Applied");
             }
         else{
@@ -377,6 +407,40 @@ class JobController extends Controller
         $q = strtolower($request->input('q'));
         $jobs = DB::table('jobs')->where('company',$q)->simplepaginate(7);
         return view ('jobs')->with('jobs',$jobs);
+    }
+
+    public function sendMail($token)
+    {
+        if(Auth::user()->UserType == 1 || Auth::user()->UserType == 2)
+        {
+                $job = DB::select( "SELECT * FROM jobs WHERE verification_token = '$token'");
+                $branch = json_decode($job[0]->branches);
+                $course = json_decode($job[0]->courses);
+                $year = json_decode($job[0]->year);
+                $tenthpercentage = $job[0]->tenthpercentage;
+                $twelfthpercentage = $job[0]->twelfthpercentage;
+                $sgpa = $job[0]->sgpa;
+                $backlogs = $job[0]->backlogs;
+                $emails = Student::whereIN('grad_year', $year)->whereIN('course', $course)->whereIN('branch', $branch)->where('tenthPercentage' , '>=' , $tenthpercentage)->where('twelfthPercentage' , '>=' , $twelfthpercentage)->where('sgpa' , '>=' , $sgpa)->where('backlogs' , '<=' , $backlogs)->pluck('email')->toArray();
+            
+
+            $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+            foreach($emails as $email)
+            {
+                $beautymail->send('notify', [], function($message) use ($email)
+                {
+                    $message->from('donotreply@admin.com');
+                    $message->to($email);
+                    $message->subject('Job Posting Alert');
+                });
+            }
+
+            return redirect()->back()->with("success","Notification sent");
+        }
+        
+        elseif(Auth::user()->UserType == 3){
+            return response(abort(403,''));
+        }
     }
 
     /*
